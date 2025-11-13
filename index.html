@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yapay Zeka Cilt Analizi - Sayfa 1</title>
+    <title>Yapay Zeka Cilt Analizi</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -233,13 +233,13 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             opacity: 0.5;
-            disabled: true;
+            pointer-events: none;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
             margin-top: 20px;
         }
         .teste-basla-button.aktif {
             opacity: 1;
-            disabled: false;
+            pointer-events: auto;
         }
         .teste-basla-button:hover {
             background-color: #217dbb;
@@ -262,7 +262,7 @@
     <main>
         <div class="container">
             <div class="klinik-banner">
-                <strong>Klinik Adı:</strong> INNOVATION YALOVA | <strong>Klinik Personeli:</strong> Yağmur Aydan Anıkarslan
+                <strong>Klinik Adı:</strong> | <strong>Klinik Personeli:</strong>
             </div>
             <h1>Cilt Analizi - Adım 1: Bilgiler</h1>
             <form id="cilt-analizi-form">
@@ -308,6 +308,16 @@
                         <option value="hayir">Hayır</option>
                     </select>
                 </div>
+                <div class="form-grup">
+                    <label for="cilt-tonu">Cilt Tonunuz?</label>
+                    <select id="cilt-tonu" name="cilt-tonu" required>
+                        <option value="">Seçiniz</option>
+                        <option value="acik">Açık</option>
+                        <option value="orta">Orta</option>
+                        <option value="koyu">Koyu</option>
+                        <option value="bilmiyorum">Bilmiyorum</option>
+                    </select>
+                </div>
                 
                 <div class="form-grup">
                     <label for="cilt-tipi">Cilt Tipiniz Nedir?</label>
@@ -318,6 +328,7 @@
                         <option value="karma">Karma</option>
                         <option value="hassas">Hassas</option>
                         <option value="normal">Normal</option>
+                        <option value="bilmiyorum">Bilmiyorum</option>
                     </select>
                 </div>
 
@@ -449,7 +460,7 @@
             };
             localStorage.setItem('ciltAnaliziVerileri', JSON.stringify(formData));
 
-            window.location.href = 'sayfa2.html'; // Sayfa 2'ye yönlendir
+            window.location.href = 'photo-up.html';
         });
     </script>
 </body>

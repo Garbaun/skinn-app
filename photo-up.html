@@ -233,6 +233,24 @@
             color: #fff;
             border-bottom-color: #455a64;
         }
+        /* Resim önizleme alanı için stil */
+        #preview-container {
+            width: 300px;
+            height: 200px;
+            border: 3px solid #b0b0b0; /* Önceki sürükle bırak alanına benzer bir çerçeve */
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e8e8e8;
+            overflow: hidden; /* Taşmayı engelle */
+        }
+        #preview-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Resmi kutuya sığdırır */
+            display: none; /* Başlangıçta gizli */
+        }
     </style>
 </head>
 <body class="acik-tema">
@@ -251,7 +269,7 @@
     <main>
         <div class="container">
             <div class="klinik-banner">
-                <strong>Klinik Adı:</strong> INNOVATION YALOVA | <strong>Klinik Personeli:</strong> Yağmur Aydan Anıkarslan
+                <strong>Klinik Adı:</strong> | <strong>Klinik Personeli:</strong>
             </div>
             <h1>Cilt Analizi - Adım 2: Fotoğraf Yükleme</h1>
             <div class="upload-container">
@@ -259,6 +277,10 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
                     <p>Fotoğrafı buraya sürükleyin veya seçin</p>
                 </div>
+                <div id="preview-container" style="display: none;">
+                    <img id="image-preview" src="#" alt="Yüklenen Resim Önizleme">
+                </div>
+
                 <div class="ek-foto-butonlari">
                     <button id="yuz-on-button">Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
                     <button id="yuz-sol-button">Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucude-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
@@ -280,33 +302,54 @@
         const dosyaSec = document.getElementById("dosya-sec");
         const surukleBirakAlani = document.getElementById("surukle-birak-alani");
         const ileriButton = document.getElementById("ileri-buton");
+        const imagePreview = document.getElementById("image-preview"); // Yeni eklenen önizleme resmi
+        const previewContainer = document.getElementById("preview-container"); // Yeni eklenen önizleme alanı
 
         const yuzOnButton = document.getElementById("yuz-on-button");
         const yuzSolButton = document.getElementById("yuz-sol-button");
         const yuzSagButton = document.getElementById("yuz-sag-button");
         const yuzProfilButton = document.getElementById("yuz-profil-button");
 
-
         let fotoYuklendi = false;
-        let fotoSayisi = 0;
+        let uploadedImageBase64 = null; // Base64 verisini saklamak için yeni değişken
 
-
+        // Butonlara tıklama olayları, dosya seçiciyi tetikler
         yuzOnButton.addEventListener("click", () => dosyaSec.click());
         yuzSolButton.addEventListener("click", () => dosyaSec.click());
         yuzSagButton.addEventListener("click", () => dosyaSec.click());
         yuzProfilButton.addEventListener("click", () => dosyaSec.click());
 
 
-        dosyaSec.addEventListener("change", function() {
-             fotoSayisi++;
-             if(fotoSayisi >= 1){
-                fotoYuklendi = true;
-                ileriButton.classList.add("aktif");
-                ileriButton.disabled = false; // İleri butonunu aktif et
-             }
+        dosyaSec.addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                // Dosya seçildiğinde önizlemeyi göster ve Base64'e çevir
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    previewContainer.style.display = 'flex'; // Önizleme kapsayıcısını göster
+                    surukleBirakAlani.style.display = 'none'; // Sürükle bırak alanını gizle
 
+                    uploadedImageBase64 = e.target.result; // Base64 verisini kaydet
+                    fotoYuklendi = true;
+                    ileriButton.classList.add("aktif");
+                    ileriButton.disabled = false; // İleri butonunu aktif et
+                };
+                reader.readAsDataURL(file); // Dosyayı Base64 olarak oku
+            } else {
+                imagePreview.src = '#';
+                imagePreview.style.display = 'none';
+                previewContainer.style.display = 'none';
+                surukleBirakAlani.style.display = 'flex';
+                uploadedImageBase64 = null;
+                fotoYuklendi = false;
+                ileriButton.classList.remove("aktif");
+                ileriButton.disabled = true;
+            }
         });
 
+        // Sürükle bırak olayları
         surukleBirakAlani.addEventListener("dragover", function(e) {
             e.preventDefault();
             this.classList.add("surukleniyor");
@@ -317,21 +360,46 @@
             this.classList.remove("surukleniyor");
         });
 
-         surukleBirakAlani.addEventListener("drop", function(e) {
+        surukleBirakAlani.addEventListener("drop", function(e) {
             e.preventDefault();
             this.classList.remove("surukleniyor");
-             fotoSayisi++;
-             if(fotoSayisi >= 1){
-                fotoYuklendi = true;
-                ileriButton.classList.add("aktif");
-                ileriButton.disabled = false; // İleri butonunu aktif et
-             }
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    previewContainer.style.display = 'flex'; // Önizleme kapsayıcısını göster
+                    surukleBirakAlani.style.display = 'none'; // Sürükle bırak alanını gizle
+
+                    uploadedImageBase64 = e.target.result; // Base64 verisini kaydet
+                    fotoYuklendi = true;
+                    ileriButton.classList.add("aktif");
+                    ileriButton.disabled = false; // İleri butonunu aktif et
+                };
+                reader.readAsDataURL(file); // Dosyayı Base64 olarak oku
+            } else {
+                alert("Lütfen bir resim dosyası sürükleyip bırakın.");
+                imagePreview.src = '#';
+                imagePreview.style.display = 'none';
+                previewContainer.style.display = 'none';
+                surukleBirakAlani.style.display = 'flex';
+                uploadedImageBase64 = null;
+                fotoYuklendi = false;
+                ileriButton.classList.remove("aktif");
+                ileriButton.disabled = true;
+            }
         });
 
+        // "Karşıya Yükle" butonuna tıklama olayı
         ileriButton.addEventListener("click", function() {
-             if (fotoYuklendi) {
-                window.location.href = "sonuclar.html"; // Bağlantı güncellendi
-             }
+            if (fotoYuklendi && uploadedImageBase64) {
+                // Base64 verisini localStorage'a kaydet
+                localStorage.setItem('uploadedImage', uploadedImageBase64);
+                window.location.href = "sonuclar.html"; // sonuclar.html'e yönlendir
+            } else {
+                alert("Lütfen önce bir fotoğraf yükleyin.");
+            }
         });
     </script>
 </body>

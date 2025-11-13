@@ -316,7 +316,7 @@
     <main>
         <div class="container">
             <div class="klinik-banner">
-                <strong>Klinik Adı:</strong> INNOVATION YALOVA | <strong>Klinik Personeli:</strong> Yağmur Aydan Anıkarslan
+                <strong>Klinik Adı:</strong> | <strong>Klinik Personeli:</strong>
             </div>
             <h1>Cilt Analizi Sonuçları</h1>
             <div class="sonuc-formu"> <label for="cilt-tipi">Cilt Tipi:</label>
@@ -364,8 +364,8 @@
 
             <div class="galeri">
                 <div class="galeri-item">
-                    <img src="https://placehold.co/200x300/c0c0c0/333333?text=Galeri+1" alt="Galeri Resim 1">
-                    <p class="aciklama">Açıklama 1</p>
+                    <img id="uploaded-image" src="https://placehold.co/200x300/c0c0c0/333333?text=Yuklenen+Resim" alt="Yüklenen Resim">
+                    <p class="aciklama">Yüklenen Görsel</p>
                 </div>
                 <div class="galeri-item">
                     <img src="https://placehold.co/200x300/c0c0c0/333333?text=Galeri+2" alt="Galeri Resim 2">
@@ -437,6 +437,39 @@
         cilt.ai <span class="kanduras-medya-link" onclick="window.open('http://www.kandurasmedya.com', '_blank')">Kanduras Medya</span> oluşumudur. Tüm Hakları Saklıdır. Copyright 2025 ©
     </footer>
     <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('ciltAnaliziVerileri');
+                if (stored) {
+                    var data = JSON.parse(stored);
+                    var ct = document.getElementById('cilt-tipi');
+                    var kb = document.getElementById('kuruluk-bolgeleri');
+                    var tedavi = document.getElementById('cilt-tedavisi');
+                    var tono = document.getElementById('cilt-tonu');
+                    var yas = document.getElementById('yas-araligi');
+                    var cins = document.getElementById('cinsiyet');
+                    var ham = document.getElementById('hamilelik');
+                    var analiz = document.getElementById('analiz-turu');
+                    if (ct && data.ciltTipi) ct.value = data.ciltTipi;
+                    if (kb && data.kurulukBolgeleri) kb.value = data.kurulukBolgeleri;
+                    if (tedavi && data.ciltTedavisi) tedavi.value = data.ciltTedavisi;
+                    if (tono && data.ciltTonu) tono.value = data.ciltTonu;
+                    if (yas && data.yasAraligi) yas.value = data.yasAraligi;
+                    if (cins && data.cinsiyet) cins.value = data.cinsiyet;
+                    if (ham && data.hamilelik) ham.value = data.hamilelik;
+                    if (analiz && data.analizTuru) analiz.value = data.analizTuru;
+                } else {
+                    alert('Analiz verileri bulunamadı. Lütfen önce formu doldurup fotoğraf yükleyin.');
+                    window.location.href = 'index.html';
+                    return;
+                }
+                var up = localStorage.getItem('uploadedImage');
+                var upImg = document.getElementById('uploaded-image');
+                if (up && upImg) {
+                    upImg.src = up;
+                }
+            } catch (e) {}
+        })();
         const temaDegistirButton = document.querySelector(".tema-degistir-button");
         const body = document.body;
         const sonuclariKaydetButton = document.getElementById("sonuclari-kaydet");
