@@ -519,13 +519,30 @@
         }
 
         sonuclariKaydetButton.addEventListener("click", () => {
-           alert("Sonuçlar kaydedildi!");
+           const data = {
+             ciltTipi: document.getElementById('cilt-tipi')?.value || '',
+             kurulukBolgeleri: document.getElementById('kuruluk-bolgeleri')?.value || '',
+             ciltTedavisi: document.getElementById('cilt-tedavisi')?.value || '',
+             ciltTonu: document.getElementById('cilt-tonu')?.value || '',
+             yasAraligi: document.getElementById('yas-araligi')?.value || '',
+             cinsiyet: document.getElementById('cinsiyet')?.value || '',
+             hamilelik: document.getElementById('hamilelik')?.value || '',
+             analizTuru: document.getElementById('analiz-turu')?.value || ''
+           };
+           const image = localStorage.getItem('uploadedImage') || '';
+           const kayitlar = JSON.parse(localStorage.getItem('analizKayitlari') || '[]');
+           kayitlar.push({
+             tarih: new Date().toISOString(),
+             veri: data,
+             resim: image,
+             kredi: localStorage.getItem('krediBakiyesi') || ''
+           });
+           localStorage.setItem('analizKayitlari', JSON.stringify(kayitlar));
+           alert("Sonuçlar kaydedildi");
         });
 
         iyilesmeTakibiButton.addEventListener("click", () => {
-            // İyileşme takibi sayfasına yönlendirme yapılacak.
-            alert("İyileşme Takibi sayfasına yönlendiriliyorsunuz!");
-            // window.location.href = "iyilesme-takibi.html"; // Bu satır, iyilesme takibi sayfası oluşturulduğunda kullanılabilir.
+            window.location.href = "iyilesme-takibi.html";
         });
 
         // Gemini API Entegrasyonu: Kişiselleştirilmiş Bakım Rutini Oluşturma

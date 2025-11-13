@@ -317,9 +317,8 @@
             button.addEventListener('click', function() {
                 const krediMiktari = this.dataset.kredi;
                 const fiyat = this.dataset.fiyat;
-                showCustomAlert(`${krediMiktari} Kredi (${fiyat} USD) satın alma işlemi başlatıldı. Ödeme sayfasına yönlendiriliyorsunuz...`);
-                // Gerçek bir uygulamada burada ödeme sayfasına yönlendirme veya ödeme API'si çağrısı yapılır.
-                // window.location.href = `odeme.html?kredi=${krediMiktari}&fiyat=${fiyat}`;\
+                localStorage.setItem('krediBakiyesi', krediMiktari);
+                showCustomAlert(`${krediMiktari} Kredi (${fiyat} USD) satın alma işlemi başlatıldı. Bakiye güncellendi.`);
             });
         });
 
