@@ -1,0 +1,12 @@
+name = "skinn-app"
+main = "src/worker.mjs"
+compatibility_date = "2024-09-09"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "skinnapp-db"
+database_id = "d3af9df6-2cca-43dc-a07c-bf0a64558a6e"
+
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "skinn-images"

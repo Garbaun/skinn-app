@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yapay Zeka Cilt Analizi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Yapay Zeka Cilt Analizi</title>
+        <meta name="theme-color" content="#3498db">
+        <link rel="manifest" href="manifest.webmanifest">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+        <style>
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
@@ -257,6 +259,7 @@
         <div class="sag-butonlar">
             <a href="profil-giris.html"><div class="profil-button">Profil Giriş</div></a>
             <a href="klinik-giris.html"><div class="klinik-button">Klinik Giriş</div></a>
+            <a href="izinler.html"><div class="klinik-button">İzinler</div></a>
         </div>
     </header>
     <main>
@@ -289,14 +292,15 @@
                 </div>
 
                 <div class="form-grup">
-                    <label for="kuruluk-bolgeleri">Cildinizde Hangi Bölgelerde Genellikle Kuruluk Hissedersiniz?</label>
+                    <label for="kuruluk-bolgeleri">Cildinizde Hangi Bölgede Analiz Yaptıracaksınız?</label>
                     <select id="kuruluk-bolgeleri" name="kuruluk-bolgeleri" required>
                         <option value="">Seçiniz</option>
-                        <option value="yanaklar">Yanaklar</option>
-                        <option value="alin">Alın</option>
-                        <option value="cene">Çene</option>
-                        <option value="goz-cevresi">Göz Çevresi</option>
-                        <option value="tum-yuz">Tüm Yüz</option>
+                        <option value="bas">Baş</option>
+                        <option value="boyun">Boyun</option>
+                        <option value="eller-ayaklar">Eller ve Ayaklar</option>
+                        <option value="kollar-bacaklar">Kollar ve Bacaklar</option>
+                        <option value="vucut">Vücut</option>
+                        <option value="genital">Genital</option>
                     </select>
                 </div>
 
@@ -341,14 +345,7 @@
                     </select>
                 </div>
 
-                <div class="form-grup">
-                    <label for="analiz-turu">Analiz Türü Seçimi:</label>
-                    <select id="analiz-turu" name="analiz-turu" required>
-                        <option value="">Seçiniz</option>
-                        <option value="ilk-analiz">İlk Analiz</option>
-                        <option value="iyilesme-takibi">İyileşme Takibi</option>
-                    </select>
-                </div>
+
 
                 <div class="sozlesmeler">
                     <h3>Sözleşmeler ve Lisanslar</h3>
@@ -455,8 +452,7 @@
                 ciltTonu: document.getElementById('cilt-tonu').value,
                 yasAraligi: document.getElementById('yas-araligi').value,
                 cinsiyet: document.getElementById('cinsiyet').value,
-                hamilelik: document.getElementById('hamilelik').value,
-                analizTuru: document.getElementById('analiz-turu').value
+                hamilelik: document.getElementById('hamilelik').value
             };
             localStorage.setItem('ciltAnaliziVerileri', JSON.stringify(formData));
 

@@ -264,6 +264,7 @@
         <div class="sag-butonlar">
             <div class="profil-button" onclick="window.location.href='profil-giris.html'">Profil Giriş</div>
             <div class="klinik-button" onclick="window.location.href='klinik-giris.html'">Klinik Giriş</div>
+            <div class="klinik-button" onclick="window.location.href='izinler.html'">İzinler</div>
         </div>
     </header>
     <main>
@@ -282,12 +283,12 @@
                 </div>
 
                 <div class="ek-foto-butonlari">
-                    <button id="yuz-on-button">Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
-                    <button id="yuz-sol-button">Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucude-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
-                    <button id="yuz-sag-button">Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
-                    <button id="yuz-profil-button">Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
+                    <button id="yuz-on-button">Ön Yüz Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
+                    <button id="yuz-sol-button">Sol Profil Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
+                    <button id="yuz-sag-button">Sağ Profil Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
                     <input type="file" id="dosya-sec" accept="image/*" style="display: none;">
                 </div>
+                <div id="upload-status" style="margin-top:8px; font-weight:bold; color:#555;">Yükleme durumu: Bekleniyor</div>
             </div>
             <div style="display: flex; justify-content: center;">
                 <button id="ileri-buton" class="ileri-butonu" disabled>Karşıya Yükle</button>
@@ -308,7 +309,6 @@
         const yuzOnButton = document.getElementById("yuz-on-button");
         const yuzSolButton = document.getElementById("yuz-sol-button");
         const yuzSagButton = document.getElementById("yuz-sag-button");
-        const yuzProfilButton = document.getElementById("yuz-profil-button");
 
         let fotoYuklendi = false;
         let uploadedImageBase64 = null; // Base64 verisini saklamak için yeni değişken
@@ -317,7 +317,6 @@
         yuzOnButton.addEventListener("click", () => dosyaSec.click());
         yuzSolButton.addEventListener("click", () => dosyaSec.click());
         yuzSagButton.addEventListener("click", () => dosyaSec.click());
-        yuzProfilButton.addEventListener("click", () => dosyaSec.click());
 
 
         dosyaSec.addEventListener("change", function(event) {
@@ -335,6 +334,8 @@
                     fotoYuklendi = true;
                     ileriButton.classList.add("aktif");
                     ileriButton.disabled = false; // İleri butonunu aktif et
+                    const st = document.getElementById('upload-status');
+                    if (st) { st.textContent = 'Yükleme durumu: Tamamlandı'; st.style.color = '#2e7d32'; }
                 };
                 reader.readAsDataURL(file); // Dosyayı Base64 olarak oku
             } else {
@@ -346,6 +347,8 @@
                 fotoYuklendi = false;
                 ileriButton.classList.remove("aktif");
                 ileriButton.disabled = true;
+                const st = document.getElementById('upload-status');
+                if (st) { st.textContent = 'Yükleme durumu: Bekleniyor'; st.style.color = '#555'; }
             }
         });
 
@@ -376,6 +379,8 @@
                     fotoYuklendi = true;
                     ileriButton.classList.add("aktif");
                     ileriButton.disabled = false; // İleri butonunu aktif et
+                    const st = document.getElementById('upload-status');
+                    if (st) { st.textContent = 'Yükleme durumu: Tamamlandı'; st.style.color = '#2e7d32'; }
                 };
                 reader.readAsDataURL(file); // Dosyayı Base64 olarak oku
             } else {
@@ -388,15 +393,29 @@
                 fotoYuklendi = false;
                 ileriButton.classList.remove("aktif");
                 ileriButton.disabled = true;
+                const st = document.getElementById('upload-status');
+                if (st) { st.textContent = 'Yükleme durumu: Bekleniyor'; st.style.color = '#555'; }
             }
         });
 
         // "Karşıya Yükle" butonuna tıklama olayı
-        ileriButton.addEventListener("click", function() {
+        ileriButton.addEventListener("click", async function() {
             if (fotoYuklendi && uploadedImageBase64) {
-                // Base64 verisini localStorage'a kaydet
                 localStorage.setItem('uploadedImage', uploadedImageBase64);
-                window.location.href = "sonuclar.html"; // sonuclar.html'e yönlendir
+                try {
+                    const base = (window.PushConfig && window.PushConfig.apiBase) ? window.PushConfig.apiBase : ''
+                    const upRes = await fetch((base? base: '') + '/api/upload', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ dataUrl: uploadedImageBase64 }) })
+                    if (upRes.ok) {
+                        const upJson = await upRes.json()
+                        const imageKey = upJson.imageKey
+                        const anRes = await fetch((base? base: '') + '/api/analyze', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ imageKey }) })
+                        if (anRes.ok || anRes.status === 202) {
+                            const anJson = await anRes.json()
+                            if (anJson.jobId) localStorage.setItem('jobId', anJson.jobId)
+                        }
+                    }
+                } catch (e) {}
+                window.location.href = "sonuclar.html";
             } else {
                 alert("Lütfen önce bir fotoğraf yükleyin.");
             }
