@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Height Debug Test</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    height: {
+                        '11': '2.75rem',
+                        '12': '3rem',
+                        '13': '3.25rem',
+                        '14': '3.5rem',
+                        '15': '3.75rem',
+                        '16': '4rem',
+                        'screen-sm': 'calc(100vh - 4rem)',
+                        'screen-md': 'calc(100vh - 6rem)',
+                        'screen-lg': 'calc(100vh - 8rem)'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* High specificity debug styles */
+        html body .debug-button-1 {
+            height: clamp(44px, 8vh, 56px) !important;
+            font-size: clamp(1rem, 2.5vh, 1.25rem) !important;
+            border: 3px solid red !important;
+            background: rgba(255,0,0,0.1) !important;
+        }
+        
+        html body .debug-button-2 {
+            height: calc(clamp(2.75rem, 8vh, 3.5rem)) !important;
+            font-size: clamp(0.9rem, 2vh, 1.1rem) !important;
+            border: 3px solid blue !important;
+            background: rgba(0,0,255,0.1) !important;
+        }
+        
+        html body .debug-button-3 {
+            height: 8vh !important;
+            min-height: 44px !important;
+            max-height: 56px !important;
+            border: 3px solid green !important;
+            background: rgba(0,255,0,0.1) !important;
+        }
+        
+        /* Media query tests */
+        @media (max-height: 760px) {
+            html body .responsive-test-1 {
+                height: clamp(40px, 7vh, 48px) !important;
+                font-size: clamp(0.9rem, 2vh, 1rem) !important;
+                border: 3px solid orange !important;
+            }
+        }
+        
+        @media (max-height: 640px) {
+            html body .responsive-test-2 {
+                height: clamp(36px, 6vh, 44px) !important;
+                font-size: clamp(0.8rem, 1.8vh, 0.9rem) !important;
+                border: 3px solid purple !important;
+            }
+        }
+        
+        @media (max-height: 480px) {
+            html body .responsive-test-3 {
+                height: clamp(32px, 5vh, 40px) !important;
+                font-size: clamp(0.75rem, 1.5vh, 0.85rem) !important;
+                border: 3px solid yellow !important;
+            }
+        }
+        
+        /* Viewport info display */
+        .viewport-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: black;
+            color: white;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 10000;
+            border: 2px solid white;
+        }
+        
+        /* Test container */
+        .test-container {
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            background: #f9f9f9;
+        }
+        
+        /* CSS Support detection */
+        .css-support-test {
+            display: none;
+        }
+        
+        @supports (height: clamp(1px, 1vh, 2px)) {
+            .css-support-test.clamp { display: block; color: green; }
+        }
+        
+        @supports (height: calc(1vh)) {
+            .css-support-test.calc { display: block; color: green; }
+        }
+        
+        @supports (height: 1vh) {
+            .css-support-test.vh { display: block; color: green; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4">
+    <!-- Viewport Info Display -->
+    <div class="viewport-info" id="viewportInfo">
+        <div>Viewport: <span id="viewportSize"></span></div>
+        <div>VH Test: <span id="vhTest"></span></div>
+        <div>Applied Height: <span id="appliedHeight"></span></div>
+    </div>
+
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-8">Responsive Height Debug Test</h1>
+        
+        <!-- CSS Support Detection -->
+        <div class="test-container">
+            <h2 class="text-xl font-bold mb-4">CSS Support Detection</h2>
+            <div class="css-support-test clamp">✅ clamp() supported</div>
+            <div class="css-support-test calc">✅ calc() supported</div>
+            <div class="css-support-test vh">✅ vh units supported</div>
+        </div>
+        
+        <!-- Test 1: Inline clamp() with !important -->
+        <div class="test-container">
+            <h2 class="text-xl font-bold mb-4">Test 1: Inline clamp() with !important</h2>
+            <button class="debug-button-1 px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold">
+                Button 1: clamp(44px, 8vh, 56px)
+            </button>
+            <div class="mt-2 text-sm text-gray-600">
+                Expected: 44px on small screens, 56px on large screens, 8vh in between
+            </div>
+        </div>
+        
+        <!-- Test 2: calc() with clamp() -->
+        <div class="test-container">
+            <h2 class="text-xl font-bold mb-4">Test 2: calc() with clamp()</h2>
+            <button class="debug-button-2 px-6 py-3 bg-green-500 text-white rounded-lg font-semibold">
+                Button 2: calc(clamp(2.75rem, 8vh, 3.5rem))
+            </button>
+            <div class="mt-2 text-sm text-gray-600">
+                Expected: Responsive height using rem and vh units
+            </div>
+        </div>
+        
+        <!-- Test 3: Pure vh with min/max -->
+        <div class="test-container">
+            <h2 class="text-xl font-bold mb-4">Test 3: Pure vh with min/max</h2>
+            <button class="debug-button-3 px-6 py-3 bg-purple-500 text-white rounded-lg font-semibold">
+                Button 3: 8vh (min: 44px, max: 56px)
+            </button>
+            <div class="mt-2 text-sm text-gray-600">
+                Expected: 8vh height with min/max constraints
+            </div>
+        </div>
+        
+        <!-- Test 4: Tailwind h-14 (control test) -->
+        <div class="test-container">
+            <h2 class="text-xl font-bold mb-4">Test 4: Tailwind h-14 (Control)</h2>
+            <button class="h-14 px-6 py-3 bg-red-500 text-white rounded-lg font-semibold">
+                Button 4: Tailwind h-14 (56px fixed)
+            </button>
+            <div class="mt-2 text-sm text-gray-600">
+                Expected: Fixed 56px height (this should NOT be responsive)
+            </div>
+        </div>
+        
+        <!-- Test 5: Media query responsive -->
+        <div class="test-container">
+            <h2 class="text-xl font-bold mb-4">Test 5: Media Query Responsive</h2>
+            <button class="responsive-test-1 px-6 py-3 bg-orange-500 text-white rounded-lg font-semibold">
+                Button 5: Media Query (max-height: 760px)
+            </button>
+            <div class="mt-2 text-sm text-gray-600">
+                Expected: Changes at 760px viewport height
+            </div>
+        </div>
+        
+        <!-- Test 6: Media query smaller screens -->
+        <div class="test-container">
+            <h2 class="text-xl font-bold mb-4">Test 6: Media Query Small Screens</h2>
+            <button class="responsive-test-2 px-6 py-3 bg-purple-500 text-white rounded-lg font-semibold">
+                Button 6: Media Query (max-height: 640px)
+            </button>
+            <div class="mt-2 text-sm text-gray-600">
+                Expected: Changes at 640px viewport height
+            </div>
+        </div>
+        
+        <!-- Test 7: Media query extra small -->
+        <div class="test-container">
+            <h2 class="text-xl font-bold mb-4">Test 7: Media Query Extra Small</h2>
+            <button class="responsive-test-3 px-6 py-3 bg-yellow-500 text-black rounded-lg font-semibold">
+                Button 7: Media Query (max-height: 480px)
+            </button>
+            <div class="mt-2 text-sm text-gray-600">
+                Expected: Changes at 480px viewport height
+            </div>
+        </div>
+        
+        <!-- Real-time Testing -->
+        <div class="test-container">
+            <h2 class="text-xl font-bold mb-4">Real-time Height Testing</h2>
+            <button id="testButton" class="debug-button-1 px-6 py-3 bg-indigo-500 text-white rounded-lg font-semibold">
+                Test Button - Click to measure height
+            </button>
+            <div class="mt-4">
+                <button onclick="measureAllButtons()" class="bg-gray-500 text-white px-4 py-2 rounded">
+                    Measure All Buttons
+                </button>
+                <button onclick="resizeTest()" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">
+                    Simulate Mobile Size
+                </button>
+                <button onclick="resetSize()" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">
+                    Reset Size
+                </button>
+            </div>
+            <div id="measurementResults" class="mt-4 p-4 bg-gray-200 rounded font-mono text-sm"></div>
+        </div>
+    </div>
+
+    <script>
+        // Update viewport info
+        function updateViewportInfo() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            document.getElementById('viewportSize').textContent = `${width}×${height}`;
+            
+            // Test vh unit
+            const vhTest = document.createElement('div');
+            vhTest.style.height = '10vh';
+            vhTest.style.position = 'absolute';
+            vhTest.style.visibility = 'hidden';
+            document.body.appendChild(vhTest);
+            const vhHeight = vhTest.offsetHeight;
+            document.body.removeChild(vhTest);
+            
+            document.getElementById('vhTest').textContent = `${vhHeight}px (10vh)`;
+            
+            // Measure test button
+            const testButton = document.getElementById('testButton');
+            if (testButton) {
+                const rect = testButton.getBoundingClientRect();
+                document.getElementById('appliedHeight').textContent = `${Math.round(rect.height)}px`;
+            }
+        }
+        
+        // Measure all buttons
+        function measureAllButtons() {
+            const buttons = document.querySelectorAll('button[class*="debug-"], button[class*="responsive-"], button.h-14');
+            const results = document.getElementById('measurementResults');
+            let html = '<h3>Button Height Measurements:</h3>';
+            
+            buttons.forEach((btn, index) => {
+                const rect = btn.getBoundingClientRect();
+                const classes = btn.className;
+                const computed = window.getComputedStyle(btn);
+                
+                html += `<div style="margin: 10px 0; padding: 10px; border: 1px solid #ccc;">`;
+                html += `<strong>Button ${index + 1}:</strong><br>`;
+                html += `Classes: ${classes}<br>`;
+                html += `Actual Height: ${Math.round(rect.height)}px<br>`;
+                html += `Computed Height: ${computed.height}<br>`;
+                html += `Font Size: ${computed.fontSize}<br>`;
+                html += `Line Height: ${computed.lineHeight}<br>`;
+                html += `</div>`;
+            });
+            
+            results.innerHTML = html;
+        }
+        
+        // Simulate mobile size
+        function resizeTest() {
+            window.resizeTo(375, 667); // iPhone size
+            setTimeout(updateViewportInfo, 100);
+            setTimeout(measureAllButtons, 200);
+        }
+        
+        // Reset size (may not work in all browsers)
+        function resetSize() {
+            window.resizeTo(1200, 800);
+            setTimeout(updateViewportInfo, 100);
+            setTimeout(measureAllButtons, 200);
+        }
+        
+        // Initialize
+        window.addEventListener('resize', updateViewportInfo);
+        window.addEventListener('load', () => {
+            updateViewportInfo();
+            measureAllButtons();
+        });
+        
+        // Log CSS application
+        console.log('=== RESPONSIVE HEIGHT DEBUG TEST LOADED ===');
+        console.log('User Agent:', navigator.userAgent);
+        console.log('Viewport:', window.innerWidth, 'x', window.innerHeight);
+        console.log('Device Pixel Ratio:', window.devicePixelRatio);
+        
+        // Test CSS support
+        const testDiv = document.createElement('div');
+        document.body.appendChild(testDiv);
+        
+        // Test clamp support
+        testDiv.style.height = 'clamp(10px, 5vh, 20px)';
+        const clampSupported = testDiv.style.height.includes('clamp');
+        console.log('clamp() CSS support:', clampSupported);
+        
+        // Test calc support
+        testDiv.style.height = 'calc(10vh + 5px)';
+        const calcSupported = testDiv.style.height.includes('calc');
+        console.log('calc() CSS support:', calcSupported);
+        
+        document.body.removeChild(testDiv);
+        
+        // Monitor button height changes
+        setInterval(() => {
+            const testButton = document.getElementById('testButton');
+            if (testButton) {
+                const rect = testButton.getBoundingClientRect();
+                console.log('Test button height:', Math.round(rect.height), 'px');
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

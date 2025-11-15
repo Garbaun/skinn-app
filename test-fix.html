@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Height Fix Test</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Main site CSS with responsive overrides -->
+    <link href="styles/site.css" rel="stylesheet">
+    
+    <style>
+        body { padding: 20px; font-family: Arial, sans-serif; }
+        .test-section { margin: 20px 0; padding: 20px; border: 2px solid #ccc; background: #f9f9f9; }
+        .viewport-info { position: fixed; top: 10px; right: 10px; background: black; color: white; padding: 10px; font-family: monospace; font-size: 12px; z-index: 1000; }
+    </style>
+</head>
+<body>
+    <div class="viewport-info" id="viewportInfo">
+        <div>Viewport: <span id="viewportSize"></span></div>
+        <div>Test on mobile devices or resize browser</div>
+    </div>
+
+    <h1>Responsive Height Fix Test</h1>
+    <p>This page tests if the responsive height override rules are working correctly.</p>
+
+    <div class="test-section">
+        <h2>Test 1: Tailwind h-11 (should be responsive now)</h2>
+        <button class="h-11 px-4 bg-blue-500 text-white rounded">h-11 Button (was fixed 44px)</button>
+        <div class="mt-2 text-sm">Expected: Responsive height 36-44px based on viewport</div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Tailwind h-12 (should be responsive now)</h2>
+        <button class="h-12 px-4 bg-green-500 text-white rounded">h-12 Button (was fixed 48px)</button>
+        <div class="mt-2 text-sm">Expected: Responsive height 40-48px based on viewport</div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Tailwind h-14 (should be responsive now)</h2>
+        <button class="h-14 px-4 bg-red-500 text-white rounded">h-14 Button (was fixed 56px)</button>
+        <div class="mt-2 text-sm">Expected: Responsive height 44-56px based on viewport</div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 4: Multiple buttons like in the actual app</h2>
+        <div class="space-y-2">
+            <button class="h-11 w-full px-4 bg-primary text-white rounded">Action Button 1</button>
+            <button class="h-12 w-full px-4 bg-secondary text-white rounded">Action Button 2</button>
+            <button class="h-14 w-full px-4 bg-accent text-white rounded">Action Button 3</button>
+        </div>
+        <div class="mt-2 text-sm">All should be responsive now</div>
+    </div>
+
+    <div class="test-section">
+        <h2>Instructions</h2>
+        <ol class="list-decimal ml-6">
+            <li>Open browser developer tools (F12)</li>
+            <li>Toggle device toolbar (Ctrl+Shift+M)</li>
+            <li>Select different mobile devices (iPhone, Samsung Galaxy, etc.)</li>
+            <li>Check if button heights change responsively</li>
+            <li>Test on actual mobile device if possible</li>
+        </ol>
+    </div>
+
+    <script>
+        function updateViewportInfo() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            document.getElementById('viewportSize').textContent = `${width}×${height}`;
+            
+            // Measure button heights
+            const buttons = document.querySelectorAll('button[class*="h-"]');
+            buttons.forEach((btn, index) => {
+                const rect = btn.getBoundingClientRect();
+                console.log(`Button ${index + 1} (${btn.className}): ${Math.round(rect.height)}px`);
+            });
+        }
+
+        window.addEventListener('resize', updateViewportInfo);
+        window.addEventListener('load', updateViewportInfo);
+        
+        console.log('=== RESPONSIVE HEIGHT FIX TEST ===');
+        console.log('If the responsive overrides are working, you should see:');
+        console.log('- h-11 buttons: 36-44px (not fixed 44px)');
+        console.log('- h-12 buttons: 40-48px (not fixed 48px)');
+        console.log('- h-14 buttons: 44-56px (not fixed 56px)');
+        console.log('Heights should change based on viewport height');
+    </script>
+</body>
+</html>
