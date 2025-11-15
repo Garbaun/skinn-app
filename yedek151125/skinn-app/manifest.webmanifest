@@ -1,0 +1,13 @@
+{
+  "name": "skinn-app",
+  "short_name": "skinn",
+  "start_url": "/",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#e0e0e0",
+  "theme_color": "#3498db",
+  "icons": [
+    { "src": "image/skinn-logo.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "image/skinn-logo.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

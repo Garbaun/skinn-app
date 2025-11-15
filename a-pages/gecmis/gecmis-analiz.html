@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Analiz Geçmişi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="../../styles/site.css" rel="stylesheet"/>
+<script>
+  tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#2badee","background-light":"#FFFFFF","background-dark":"#101c22","text-primary-light":"#212121","text-secondary-light":"#757575","text-primary-dark":"#FFFFFF","text-secondary-dark":"#A0AEC0"},fontFamily:{display:["Inter","sans-serif"]},borderRadius:{DEFAULT:"0.5rem",lg:"0.75rem",xl:"1rem",full:"9999px"}}}}
+</script>
+<style>body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-primary-light dark:text-text-primary-dark">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+  <div class="site-header fixed top-0 left-0 right-0 z-20 px-5 pt-3 pb-3 bg-transparent">
+    <button class="header-button">
+      <span class="title">Analiz geçmişi</span>
+      <span class="material-symbols-outlined" onclick="history.back()">arrow_back</span>
+    </button>
+  </div>
+  <main class="pt-[96px] flex-grow px-4 pb-32">
+    <div class="mb-6 space-y-4 rounded-xl bg-white dark:bg-white/5 p-4 card-shadow">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div>
+          <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1.5" for="tarih-araligi">Tarih Aralığı</label>
+          <select class="block w-full rounded-md border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-text-primary-light dark:text-text-primary-dark shadow-sm focus:border-primary focus:ring-primary focus:ring-opacity-50" id="tarih-araligi" name="tarih-araligi">
+            <option>Son 1 Ay</option>
+            <option>Son 3 Ay</option>
+            <option selected>Tümü</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1.5" for="cilt-sorunu">Cilt Sorunu</label>
+          <select class="block w-full rounded-md border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-text-primary-light dark:text-text-primary-dark shadow-sm focus:border-primary focus:ring-primary focus:ring-opacity-50" id="cilt-sorunu" name="cilt-sorunu">
+            <option selected>Tümü</option>
+            <option>Akne</option>
+            <option>Leke</option>
+            <option>Kırışıklık</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1.5" for="risk-seviyesi">Risk Seviyesi</label>
+        <div id="risk-group" class="grid grid-cols-3 gap-2 rounded-lg bg-gray-100 dark:bg-gray-800 p-1">
+          <button data-risk="Dusuk" class="rounded py-2 text-sm font-semibold text-text-secondary-light dark:text-text-secondary-dark transition-all">Düşük</button>
+          <button data-risk="Orta" class="rounded py-2 text-sm font-semibold text-text-secondary-light dark:text-text-secondary-dark transition-all">Orta</button>
+          <button data-risk="Yuksek" class="rounded py-2 text-sm font-semibold text-text-secondary-light dark:text-text-secondary-dark transition-all">Yüksek</button>
+        </div>
+      </div>
+      <button class="flex w-full items-center justify-center gap-2 px-4 shadow-sm transition-all hover:bg-primary/90 btn-style btn-shadow"><span>Filtrele</span></button>
+    </div>
+    <h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-[#617c89] dark:text-gray-200 mb-3">Ürün Önerileri</h2>
+    <div class="grid grid-cols-2 gap-3 mb-6">
+      <a href="../yardimci-urunler/yardimci-urunler.html#nemlendirici" class="flex flex-col gap-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-white/5 p-3 card-shadow">
+        <div class="aspect-square w-full rounded-lg bg-primary/10 flex items-center justify-center">
+          <img alt="Nemlendirici Serum" class="h-20 w-20 object-contain" src="/rutin-urun/nemlendirici.png"/>
+        </div>
+        <div class="flex flex-col">
+          <p class="font-semibold text-sm text-text-primary-light dark:text-text-primary-dark">Nemlendirici Serum</p>
+          <p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Hyaluronik asit ile derin nem.</p>
+        </div>
+      </a>
+      <a href="../yardimci-urunler/yardimci-urunler.html#gunes-kremi" class="flex flex-col gap-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-white/5 p-3 card-shadow">
+        <div class="aspect-square w-full rounded-lg bg-primary/10 flex items-center justify-center">
+          <img alt="Güneş Koruyucu" class="h-20 w-20 object-contain" src="/rutin-urun/gunes-kremi.png"/>
+        </div>
+        <div class="flex flex-col">
+          <p class="font-semibold text-sm text-text-primary-light dark:text-text-primary-dark">Güneş Koruyucu</p>
+          <p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">SPF 50+ ile yüksek koruma.</p>
+        </div>
+      </a>
+    </div>
+    <div id="history-list" class="flex flex-col gap-3"></div>
+  </main>
+  <div class="footer-bar">
+    <div class="flex flex-col items-center gap-2"><p class="text-sm text-text-secondary-light dark:text-text-secondary-dark font-medium">Karşılaştırmak için iki analiz seçin.</p><button id="compare-btn" disabled class="footer-button bg-primary text-white hover:bg-primary/90 disabled:bg-primary disabled:text-white disabled:cursor-not-allowed btn-shadow"><span class="material-symbols-outlined">compare_arrows</span><span>Karşılaştır</span></button></div>
+  </div>
+  <div id="compare-modal" class="fixed inset-0 z-30 hidden">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div role="dialog" aria-modal="true" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(680px,92vw)] rounded-xl bg-white dark:bg-gray-800 p-6 shadow-xl">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-xl font-bold text-[#617c89] dark:text-gray-200">Karşılaştırma Özeti</h2>
+        <button id="modal-close" class="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700 text-[#617c89] dark:text-gray-200"><span class="material-symbols-outlined">close</span></button>
+      </div>
+      <div class="space-y-3">
+        <p class="text-sm"><span class="font-semibold">Kullanıcı hedefi:</span> Geçmiş analizleri karşılaştırıp güvenli bakım önerileri almak.</p>
+        <div class="space-y-1">
+          <p class="text-sm font-semibold">Gözlemler:</p>
+          <p id="obs-1" class="text-sm"></p>
+          <p id="obs-2" class="text-sm"></p>
+        </div>
+        <div class="space-y-1">
+          <p class="text-sm font-semibold">Öneriler:</p>
+          <ul id="rec-list" class="list-disc pl-5 space-y-1 text-sm"></ul>
+        </div>
+        <p id="missing" class="text-sm"><span class="font-semibold">Eksik bilgi:</span> Hangi bölge ve ana şikâyet nedir? Varsa görsel paylaşır mısınız?</p>
+        <p id="next-step" class="text-sm"><span class="font-semibold">Sonraki adım:</span> Bu bilgiye göre içerik dozunu ve rutini kişiselleştirip adım adım güncelleyeceğim.</p>
+      </div>
+    </div>
+  </div>
+  <script src="../../push-config.js"></script>
+  <script>
+    const items = Array.from(document.querySelectorAll('[data-item] input[type="checkbox"]'));
+    const btn = document.getElementById('compare-btn');
+    function updateBtn(){
+      const count = items.filter(i=>i.checked).length;
+      btn.disabled = count!==2;
+    }
+    function trStatus(s){
+      if(/completed/i.test(s)) return 'Tamamlandı';
+      if(/processing/i.test(s)) return 'İşlemde';
+      if(/failed/i.test(s)) return 'Başarısız';
+      return 'Bilinmiyor';
+    }
+    function withinRange(dt, range){
+      const d = new Date(dt).getTime();
+      const now = Date.now();
+      if(isNaN(d)) return true;
+      if(range==='Son 1 Ay') return d >= now - 30*24*3600*1000;
+      if(range==='Son 3 Ay') return d >= now - 90*24*3600*1000;
+      return true;
+    }
+    async function fetchJob(id){
+      try{
+        const base=(window.PushConfig&&window.PushConfig.apiBase)?window.PushConfig.apiBase:'';
+        if(!base) return {id,status:'unknown',created_at:''};
+        const r=await fetch(base+`/api/result/${id}`);
+        if(!r.ok) return {id,status:'failed',created_at:''};
+        return await r.json();
+      }catch(_){ return {id,status:'failed',created_at:''} }
+    }
+    function buildCard(job){
+      const dTxt = job.created_at? new Date(job.created_at).toLocaleString('tr-TR') : job.id;
+      const sTxt = trStatus(job.status||'');
+      const el=document.createElement('div');
+      el.className='flex items-center gap-4 rounded-lg bg-white dark:bg-white/5 p-3 min-h-[72px] justify-between transition-all card-shadow';
+      el.setAttribute('data-item','true');
+      el.innerHTML=`<div class="flex items-center gap-4">
+        <div class="size-14 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center"><span class="material-symbols-outlined text-[#617c89]">image</span></div>
+        <div class="flex flex-col justify-center"><p class="text-base font-medium leading-normal line-clamp-1 text-text-primary-light dark:text-text-primary-dark">${dTxt}</p><p class="text-sm font-normal leading-normal line-clamp-2 text-text-secondary-light dark:text-text-secondary-dark">${sTxt}</p></div>
+      </div>
+      <div class="shrink-0"><div class="flex size-7 items-center justify-center"><input class="h-5 w-5 rounded-full border-gray-300 dark:border-gray-600 border-2 bg-transparent text-primary checked:bg-primary checked:border-primary focus:ring-0 focus:ring-offset-0" type="checkbox"/></div></div>`;
+      return el;
+    }
+    async function render(){
+      const list=document.getElementById('history-list');
+      list.innerHTML='';
+      let ids=[];
+      try{ ids=JSON.parse(localStorage.getItem('gecmisAnalizler')||'[]') }catch(_){ ids=[] }
+      if(!Array.isArray(ids)||ids.length===0){ const p=document.createElement('p'); p.className='text-sm text-gray-500'; p.textContent='Henüz analiz geçmişi yok'; list.appendChild(p); items.length=0; updateBtn(); return }
+      const rangeSel=document.getElementById('tarih-araligi'); const range=rangeSel?rangeSel.value:'Tümü';
+      const jobs=await Promise.all(ids.map(fetchJob));
+      jobs.filter(j=>withinRange(j.created_at||'', range)).forEach(j=>{ const card=buildCard(j); list.appendChild(card) });
+      const cbArr=Array.from(list.querySelectorAll('input[type="checkbox"]'));
+      cbArr.forEach(cb=>cb.addEventListener('change',updateBtn));
+      items.length=0; cbArr.forEach(cb=>items.push(cb));
+      updateBtn();
+    }
+    function applyRiskSelection(val){
+      const grp=document.getElementById('risk-group'); if(!grp) return;
+      grp.querySelectorAll('button').forEach(b=>{
+        b.className='rounded py-2 text-sm font-semibold text-text-secondary-light dark:text-text-secondary-dark transition-all';
+      });
+      const sel=grp.querySelector(`button[data-risk="${val}"]`)||grp.querySelector('button[data-risk="Yuksek"]');
+      if(sel){ sel.className='bg-white dark:bg-gray-700 text-primary card-shadow rounded py-2 text-sm font-semibold transition-all' }
+    }
+    (function initRisk(){
+      const grp=document.getElementById('risk-group'); if(!grp) return;
+      let cur=localStorage.getItem('riskFilter')||'Yuksek';
+      applyRiskSelection(cur);
+      grp.querySelectorAll('button').forEach(b=>{
+        b.addEventListener('click',()=>{ const v=b.getAttribute('data-risk')||'Yuksek'; localStorage.setItem('riskFilter', v); applyRiskSelection(v); })
+      });
+    })();
+    const filterBtn=document.querySelector('main .mb-6 button');
+    if(filterBtn) filterBtn.addEventListener('click',()=>{ render() });
+    render();
+    function text(el){return (el?.textContent||'').trim();}
+    function buildRec(highRisk){
+      const base=[
+        'Nazik temizleyiciyle sabah/akşam yıkayın; aşırı ovalamayın.',
+        'Geniş spektrum SPF 30+ güneş koruyucu kullanın; dışarı çıkmadan 15 dk önce.',
+        'Parfümsüz, non‑komedojenik nemlendirici tercih edin; seramid/hyaluronik asit faydalıdır.',
+        'Aktifleri yavaş ekleyin: niasinamid %2–5 veya AHA/BHA haftada 1–2 kez; önce yama testi yapın.',
+        'Tahriş/kızarıklık artarsa ürünü bırakın ve gözlemleyin.'
+      ];
+      if(highRisk) base.push('Riskli bulgularda gecikmeden dermatoloğa başvurun; teşhis yapmıyoruz.');
+      return base;
+    }
+    btn.addEventListener('click',()=>{
+      if(btn.disabled) return;
+      const selected=items.filter(i=>i.checked).slice(0,2);
+      const cards=selected.map(cb=>cb.closest('[data-item]'));
+      const d1=text(cards[0].querySelector('p')); const r1=text(cards[0].querySelectorAll('p')[1]);
+      const d2=text(cards[1].querySelector('p')); const r2=text(cards[1].querySelectorAll('p')[1]);
+      const obs1=document.getElementById('obs-1'); const obs2=document.getElementById('obs-2');
+      obs1.textContent=`${d1} — ${r1}`;
+      obs2.textContent=`${d2} — ${r2}`;
+      const highRisk = /Başarısız/i.test(r1) || /Başarısız/i.test(r2);
+      const list=document.getElementById('rec-list');
+      list.innerHTML='';
+      buildRec(highRisk).forEach(t=>{const li=document.createElement('li'); li.textContent=t; list.appendChild(li);});
+      document.getElementById('compare-modal').classList.remove('hidden');
+    });
+    document.getElementById('modal-close').addEventListener('click',()=>{
+      document.getElementById('compare-modal').classList.add('hidden');
+    });
+    document.querySelector('#compare-modal .absolute.inset-0').addEventListener('click',()=>{
+      document.getElementById('compare-modal').classList.add('hidden');
+    });
+  </script>
+</div>
+</body></html>

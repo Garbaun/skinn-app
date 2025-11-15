@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Giriş</title>
+    <title>Klinik Giriş</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/site.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -80,7 +79,7 @@
         }
         .container {
             width: 100%;
-            max-width: 800px;
+            max-width: 800px; /* Genişlik 800px olarak güncellendi */
             margin: 0 auto;
             padding: 20px;
             background-color: #f0f0f0; /* İçerik kutusu için açık gri */
@@ -105,10 +104,7 @@
             font-size: 1.1em;
         }
         .form-grup input[type="text"],
-        .form-grup input[type="email"],
-        .form-grup input[type="tel"],
-        .form-grup input[type="number"],
-        .form-grup select {
+        .form-grup input[type="password"] {
             width: calc(100% - 24px); /* Padding'i hesaba katıyoruz */
             padding: 10px;
             border: 3px solid #c0c0c0; /* Orta gri çerçeve */
@@ -118,55 +114,52 @@
             background-color: #f5f5f5; /* Input arka planı */
             color: #333;
         }
-        .neomorfik-button {
+        .button-group { /* Yeni buton grubu için flex container */
+            display: flex;
+            flex-wrap: wrap; /* Küçük ekranlarda alt alta geçiş için */
+            justify-content: center;
+            gap: 15px; /* Butonlar arası boşluk */
+            margin-top: 20px;
+        }
+        .neomorfik-button, .google-button { /* Butonlar için genel stil */
             padding: 15px 30px;
-            border: 3px solid #2badee;
             border-radius: 0;
             font-size: 18px;
             cursor: pointer;
-            background-color: #2badee;
-            color: #fff;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s ease;
             font-weight: bold;
+            flex-grow: 1; /* Butonların eşit genişlikte büyümesini sağlar */
+            max-width: 300px; /* Maksimum genişlik belirleyerek çok büyümesini engeller */
+            min-width: 200px; /* Minimum genişlik belirleyerek çok küçülmesini engeller */
+        }
+        .neomorfik-button {
+            border: 3px solid #2980b9;
+            background-color: #3498db;
+            color: #fff;
             opacity: 0.5; /* Disabled olduğunda */
         }
         .neomorfik-button.aktif {
             opacity: 1;
         }
         .neomorfik-button:hover {
-            opacity: 0.9;
+            background-color: #217dbb;
         }
         .google-button {
+            background-color: #dd4b39; /* Google kırmızısı */
+            border: 3px solid #c23321;
+            color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px 30px;
-            border: 3px solid #dd4b39; /* Google kırmızısı */
-            border-radius: 0;
-            font-size: 18px;
-            cursor: pointer;
-            background-color: #ea4335; /* Google kırmızısı */
-            color: #fff;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease;
-            font-weight: bold;
+            gap: 10px; /* İkon ile yazı arasına boşluk */
         }
         .google-button:hover {
-            background-color: #c53727;
+            background-color: #c23321;
         }
         .google-button img {
-            margin-right: 10px;
-            width: 24px;
+            width: 24px; /* Google ikon boyutu */
             height: 24px;
-        }
-        /* Butonları aynı hizaya getirmek için yeni stil */
-        .button-group {
-            display: flex;
-            justify-content: center; /* Butonları yatayda ortala */
-            align-items: center; /* Butonları dikeyde ortala */
-            gap: 20px; /* Butonlar arasında boşluk */
-            margin-top: 20px; /* Grubun üst boşluğu */
         }
         footer {
             background-color: #d0d0d0; /* Footer için orta gri */
@@ -177,14 +170,8 @@
             margin-top: 20px;
             border-top: 3px solid #c0c0c0;
         }
-        .klinik-banner {
-            background-color: #e0f7fa; /* Mevcut banner rengi */
-            color: #00897b;
-            padding: 15px;
-            text-align: center;
-            border-bottom: 3px solid #b2ebf2;
-            margin-bottom: 20px;
-            border-radius: 0; /* Köşeli */
+        .kanduras-medya-link {
+            cursor: pointer; /* Link için el işareti */
         }
         /* Sözleşme metinleri ve onay kutusu stilleri */
         .sozlesme-metin {
@@ -227,7 +214,6 @@
             font-size: 1em;
             line-height: 1.4;
         }
-
         /* Modal Stilleri */
         .modal {
             display: none; /* Hidden by default */
@@ -283,7 +269,7 @@
     </style>
 </head>
 <body>
-    <header class="site-header">
+    <header>
         <div class="kredi-button" onclick="window.location.href='kredi-yukle.html'">
             100 Kredi Yüklü <span style="color: red;">Kredi Yükle</span>
         </div>
@@ -298,49 +284,21 @@
     </header>
     <main>
         <div class="container">
-            <div class="klinik-banner">
-                <strong>Klinik Adı:</strong> | <strong>Klinik Personeli:</strong>
-            </div>
-            <h1>Profil Bilgileri</h1>
-            <form id="profil-form">
+            <h1>Klinik Girişi</h1>
+            <form id="klinik-giris-form">
                 <div class="form-grup">
-                    <label for="ad">Adınız:</label>
-                    <input type="text" id="ad" name="ad" required>
+                    <label for="klinik-adi">Klinik Adı:</label>
+                    <input type="text" id="klinik-adi" name="klinik-adi" required>
                 </div>
 
                 <div class="form-grup">
-                    <label for="soyad">Soyadınız:</label>
-                    <input type="text" id="soyad" name="soyad" required>
+                    <label for="personel-adi">Klinik Personeli Adı:</label>
+                    <input type="text" id="personel-adi" name="personel-adi" required>
                 </div>
 
                 <div class="form-grup">
-                    <label for="tc-kimlik">TC Kimlik Numarası:</label>
-                    <input type="text" id="tc-kimlik" name="tc-kimlik" pattern="\d{11}" title="Lütfen 11 haneli TC Kimlik numaranızı girin." required>
-                </div>
-
-                <div class="form-grup">
-                    <label for="mail">E-posta Adresiniz:</label>
-                    <input type="email" id="mail" name="mail" required>
-                </div>
-
-                <div class="form-grup">
-                    <label for="telefon">Telefon Numaranız:</label>
-                    <input type="tel" id="telefon" name="telefon" pattern="[0-9]{10}" title="Lütfen 10 haneli telefon numaranızı girin (örn: 5xxxxxxxxx)." required>
-                </div>
-
-                <div class="form-grup">
-                    <label for="cinsiyet">Cinsiyetiniz:</label>
-                    <select id="cinsiyet" name="cinsiyet" required>
-                        <option value="">Seçiniz</option>
-                        <option value="kadin">Kadın</option>
-                        <option value="erkek">Erkek</option>
-                        <option value="belirtmek-istemiyorum">Belirtmek İstemiyorum</option>
-                    </select>
-                </div>
-
-                <div class="form-grup">
-                    <label for="yas">Yaşınız:</label>
-                    <input type="number" id="yas" name="yas" min="18" max="99" required>
+                    <label for="sifre">Şifre:</label>
+                    <input type="password" id="sifre" name="sifre" required>
                 </div>
 
                 <div class="sozlesmeler">
@@ -352,10 +310,10 @@
                         <h3>2. Gizlilik Politikası</h3>
                         <p>Kişisel verilerinizin güvenliği bizim için önemlidir. Topladığımız veriler, hizmetlerimizi sunmak, iyileştirmek ve kişiselleştirmek amacıyla kullanılır. Verileriniz üçüncü taraflarla paylaşılmaz veya satılmaz. Detaylı bilgi için gizlilik politikamızı inceleyebilirsiniz.</p>
                         <h3>3. Sorumluluk Reddi Beyanı</h3>
-                        <p>Yapay zeka analiz sonuçları, profesyonel tıbbi tavsiyenin veya teşhisin yerini tutmaz. Uygulama tarafından sağlanan bilgiler yalnızca bilgilendirme amaçlıdır ve herhangi bir sağlık sorunu için tıbbi tavsiye olarak yorumlanmamalıdır. Herhangi bir sağlık endişeniz varsa lütfen bir uzmana danşın.</p>
+                        <p>Yapay zeka analiz sonuçları, profesyonel tıbbi tavsiyenin veya teşhisin yerini tutmaz. Uygulama tarafından sağlanan bilgiler yalnızca bilgilendirme amaçlıdır ve herhangi bir sağlık sorunu için tıbbi tavsiye olarak yorumlanmamalıdır. Herhangi bir sağlık endişeniz varsa lütfen bir uzmana danışın.</p>
                         <h3>4. MIT Lisansı</h3>
                         <p>Telif Hakkı © 2025 cilt.ai</p>
-                        <p>İşbu belge ile, bu yazılımı ve ilgili belgeleri ("Yazılım") herhangi bir kısıtlama olmaksızın, ticari kullanım, çoğaltma, değiştirme, birleştirme, yayınlama, dağıtma, alt lisans verme ve/ve da kopyalarını satma dahil ancak bunlarla sınırlı olmamak üzere, Yazılımda işlem yapmak için ücretsiz olarak izin verilir ve Yazılımın kopyalarını alan kişilere aşağıdaki koşullar altında izin verilir:</p>
+                        <p>İşbu belge ile, bu yazılımı ve ilgili belgeleri ("Yazılım") herhangi bir kısıtlama olmaksızın, ticari kullanım, çoğaltma, değiştirme, birleştirme, yayınlama, dağıtma, alt lisans verme ve/veya kopyalarını satma dahil ancak bunlarla sınırlı olmamak üzere, Yazılımda işlem yapmak için ücretsiz olarak izin verilir ve Yazılımın kopyalarını alan kişilere aşağıdaki koşullar altında izin verilir:</p>
                         <p>Yukarıdaki telif hakkı bildirimi ve bu izin bildirimi, Yazılımın tüm kopyalarına veya önemli bölümlerine dahil edilecektir.</p>
                         <p>YAZILIM "OLDUĞU GİBİ" SUNULUR, AÇIK VEYA ZIMNİ HİÇBİR GARANTİ VERİLMEZ, SATILABİLİRLİK, BELİRLİ BİR AMACA UYGUNLUK VE İHLAL ETMEME GARANTİLERİ DAHİL ANCAK BUNLARLA SINIRLI DEĞİLDİR. HİÇBİR DURUMDA YAZARLAR VEYA TELİF HAKKI SAHİPLERİ, SÖZLEŞME, HAKSIZ FİİL VEYA BAŞKA BİR ŞEKİLDE OLMAK ÜZERE, YAZILIMDAN VEYA YAZILIMIN KULLANIMINDAN VEYA DİĞER İŞLEMLERDEN KAYNAKLANAN VEYA BUNLARLA İLGİLİ HİÇBİR İDDİA, ZARAR VEYA DİĞER YÜKÜMLÜLÜKTEN SORUMLU TUTULAMAZ.</p>
                     </div>
@@ -366,16 +324,18 @@
                     </div>
                 </div>
 
-                <div class="button-group">
-                    <button type="submit" id="kaydet-button" class="neomorfik-button" disabled>Kaydet</button>
+                <div class="button-group"> <button type="submit" id="giris-yap-button" class="neomorfik-button" disabled>Giriş Yap</button>
                     <button type="button" id="google-kayit-button" class="google-button">
-                        <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_64dp.png" alt="Google Logo">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo">
                         Google ile Kayıt Ol
                     </button>
                 </div>
             </form>
         </div>
     </main>
+    <footer>
+        cilt.ai <span class="kanduras-medya-link" onclick="window.open('http://www.kandurasmedya.com', '_blank')">Kanduras Medya</span> oluşumudur. Tüm Hakları Saklıdır. Copyright 2025 ©
+    </footer>
 
     <div id="custom-alert-modal" class="modal">
         <div class="modal-content">
@@ -386,10 +346,10 @@
     </div>
 
     <script>
-        const profilForm = document.getElementById('profil-form');
-        const kaydetButton = document.getElementById('kaydet-button');
+        const klinikGirisForm = document.getElementById('klinik-giris-form');
+        const girisYapButton = document.getElementById('giris-yap-button');
         const sozlesmeOnay = document.getElementById('sozlesme-onay');
-        const googleKayitButton = document.getElementById('google-kayit-button'); // Google kayıt butonu
+        const googleKayitButton = document.getElementById('google-kayit-button'); // Yeni Google butonu
 
         // Custom Alert Modal elementleri
         const customAlertModal = document.getElementById('custom-alert-modal');
@@ -400,7 +360,7 @@
         // Custom Alert modalını gösterme fonksiyonu
         function showCustomAlert(message) {
             modalMessage.textContent = message;
-            customAlertModal.style.display = 'flex'; // Flex ile ortalama
+            customAlertModal.style.display = 'flex'; // Use flex to center
         }
 
         // Custom Alert modalını gizleme fonksiyonu
@@ -419,97 +379,66 @@
             }
         });
 
-        // Tüm gerekli alanların ve onay kutusunun durumunu kontrol eden fonksiyon
+        // Tüm form elementlerini ve sözleşme onayını kontrol eden fonksiyon
         function kontrolEt() {
             let tumAlanlarDolu = true;
 
-            // Tüm 'required' input ve select elemanlarını kontrol et
-            document.querySelectorAll('#profil-form input[required], #profil-form select[required]').forEach(element => {
-                if (element.value.trim() === '') {
+            // Tüm 'required' input elemanlarını kontrol et
+            document.querySelectorAll('#klinik-giris-form input[required]').forEach(input => {
+                if (input.value.trim() === '') {
                     tumAlanlarDolu = false;
                 }
             });
-
-            // TC Kimlik ve Telefon numarası pattern kontrolü
-            const tcKimlikInput = document.getElementById('tc-kimlik');
-            const telefonInput = document.getElementById('telefon');
-
-            if (tcKimlikInput && !/^\d{11}$/.test(tcKimlikInput.value)) {
-                tumAlanlarDolu = false;
-            }
-            if (telefonInput && !/^\d{10}$/.test(telefonInput.value)) {
-                tumAlanlarDolu = false;
-            }
 
             // Sözleşme onayını kontrol et
             if (!sozlesmeOnay.checked) {
                 tumAlanlarDolu = false;
             }
 
-            // Kaydet butonunu aktif/pasif yap
+            // Giriş Yap butonunu aktif/pasif yap
             if (tumAlanlarDolu) {
-                kaydetButton.classList.add('aktif');
-                kaydetButton.disabled = false;
+                girisYapButton.classList.add('aktif');
+                girisYapButton.disabled = false;
             } else {
-                kaydetButton.classList.remove('aktif');
-                kaydetButton.disabled = true;
+                girisYapButton.classList.remove('aktif');
+                girisYapButton.disabled = true;
             }
         }
 
         // Formdaki herhangi bir değişiklikte kontrolEt fonksiyonunu çağır
-        profilForm.addEventListener('input', kontrolEt); // input olayını dinle
-        profilForm.addEventListener('change', kontrolEt); // select ve checkbox değişikliklerini dinle
+        klinikGirisForm.addEventListener('input', kontrolEt); // input olayını dinle (metin alanları için)
         sozlesmeOnay.addEventListener('change', kontrolEt); // Sözleşme onay kutusu değiştiğinde de kontrol et
 
         // Sayfa yüklendiğinde ilk kontrolü yap
         document.addEventListener('DOMContentLoaded', kontrolEt);
 
-
-        profilForm.addEventListener('submit', function(event) {
+        klinikGirisForm.addEventListener('submit', function(event) {
             event.preventDefault(); // Formun varsayılan gönderimini engelle
 
             // Eğer buton aktif değilse, gönderimi durdur
-            if (kaydetButton.disabled) {
+            if (girisYapButton.disabled) {
                 showCustomAlert("Lütfen tüm zorunlu alanları doldurun ve sözleşmeleri onaylayın.");
                 return;
             }
 
-            // Basit bir doğrulama (kontrolEt fonksiyonu zaten çoğu doğrulamayı yapıyor, bu ek bir güvenlik katmanı)
-            const ad = document.getElementById('ad').value;
-            const soyad = document.getElementById('soyad').value;
-            const tcKimlik = document.getElementById('tc-kimlik').value;
-            const mail = document.getElementById('mail').value;
-            const telefon = document.getElementById('telefon').value;
-            const cinsiyet = document.getElementById('cinsiyet').value;
-            const yas = document.getElementById('yas').value;
+            const klinikAdi = document.getElementById('klinik-adi').value;
+            const personelAdi = document.getElementById('personel-adi').value;
+            const sifre = document.getElementById('sifre').value;
 
-            if (!ad || !soyad || !tcKimlik || !mail || !telefon || !cinsiyet || !yas) {
-                showCustomAlert('Lütfen tüm alanları doldurun.');
-                return;
-            }
-
-            if (!/^\d{11}$/.test(tcKimlik)) {
-                showCustomAlert('TC Kimlik numarası 11 haneli rakamlardan oluşmalıdır.');
-                return;
-            }
-
-            if (!/^\d{10}$/.test(telefon)) {
-                showCustomAlert('Telefon numarası 10 haneli rakamlardan oluşmalıdır.');
-                return;
-            }
-
-            showCustomAlert('Profil bilgileriniz başarıyla kaydedildi!');
-            // Bilgileri bir yere kaydetme veya başka bir sayfaya yönlendirme burada yapılabilir.
-            // Örneğin: window.location.href = 'profil-detay.html';
+            // Burada gerçek bir kimlik doğrulama işlemi yapılabilir.
+            // Şimdilik sadece bir uyarı mesajı gösteriyoruz.
+            showCustomAlert(`Klinik: ${klinikAdi}, Personel: ${personelAdi} ile giriş yapıldı!`);
+            // Başarılı girişten sonra yönlendirme yapılabilir:
+            // window.location.href = 'klinik-kontrol-paneli.html';
         });
 
-        // Google ile Kayıt Ol butonu işlevi
+        // Google ile Kayıt Ol butonuna tıklama işlevi
         googleKayitButton.addEventListener('click', () => {
-            showCustomAlert('Google ile kayıt olma özelliği şu anda geliştirilme aşamasındadır.');
-            // Burada Google ile kayıt olma API çağrısı yapılabilir.
+            showCustomAlert("Google ile kayıt olma özelliği şu anda geliştirilmektedir.");
+            // Burada Google ile kayıt olma/giriş yapma akışı başlatılabilir.
         });
 
-        // Header butonlarına tıklama olayları
+        // Header ve Footer butonlarına tıklama olayları
         const krediButton = document.querySelector("header .kredi-button");
         const profilButton = document.querySelector("header .profil-button");
         const klinikButton = document.querySelector("header .klinik-button");
@@ -524,12 +453,12 @@
         }
         if (profilButton) {
             profilButton.addEventListener("click", () => {
-                window.location.href = 'profil-giris.html'; // Zaten bu sayfada olduğunuz için yenileme görevi görür
+                window.location.href = 'profil-giris.html';
             });
         }
         if (klinikButton) {
             klinikButton.addEventListener("click", () => {
-                window.location.href = 'klinik-giris.html';
+                window.location.href = 'klinik-giris.html'; // Zaten bu sayfada olduğunuz için yenileme görevi görür
             });
         }
         if (ciltAiLogo) {

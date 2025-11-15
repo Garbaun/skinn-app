@@ -23,28 +23,9 @@ export default {
       const imageKey = body.imageKey || ""
       const id = crypto.randomUUID()
       const now = new Date().toISOString()
-      await env.DB.prepare("INSERT INTO jobs (id,image_key,status,result,created_at) VALUES (?,?,?,?,?)").bind(id,imageKey,"processing","",now).run()
-      try {
-        const obj = await env.IMAGES.get(imageKey)
-        if (!obj) {
-          await env.DB.prepare("UPDATE jobs SET status=?, result=? WHERE id=?").bind("failed","image_not_found",id).run()
-          return json({ jobId: id, status: "failed" }, 500)
-        }
-        const ab = await obj.arrayBuffer()
-        const ui8 = new Uint8Array(ab)
-        let aiText = ""
-        if (env.AI && typeof env.AI.run === "function") {
-          const aiRes = await env.AI.run("@cf/llava", { prompt: "Bu görüntüye dayanarak kısa bir cilt analizi özeti üret.", image: ui8 })
-          aiText = typeof aiRes === "string" ? aiRes : JSON.stringify(aiRes)
-        } else {
-          aiText = `LLM bağlı değil: ${imageKey}`
-        }
-        await env.DB.prepare("UPDATE jobs SET status=?, result=? WHERE id=?").bind("completed",aiText,id).run()
-        return json({ jobId: id, status: "completed" }, 202)
-      } catch (e) {
-        await env.DB.prepare("UPDATE jobs SET status=?, result=? WHERE id=?").bind("failed",String(e),id).run()
-        return json({ jobId: id, status: "failed" }, 500)
-      }
+      const result = `Analiz tamamlandı: ${imageKey}`
+      await env.DB.prepare("INSERT INTO jobs (id,image_key,status,result,created_at) VALUES (?,?,?,?,?)").bind(id,imageKey,"completed",result,now).run()
+      return json({ jobId: id, status: "completed" }, 202)
     }
     if (p.startsWith("/api/result/") && m === "GET") {
       const id = p.split("/").pop()

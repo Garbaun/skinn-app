@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="light" lang="tr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cilt.AI Bilgilendirme</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2badee",
+            background-light: "#ffffff",
+            background-dark: "#101c22",
+            text-light: "#111618",
+            text-dark: "#f0f0f0",
+            accent: "#ff8c66"
+          },
+          fontFamily: { display: ["Inter", "sans-serif"] },
+          borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; min-height: 100vh; }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+  <div class="relative flex min-h-screen w-full flex-col">
+    <div class="site-header fixed top-0 left-0 right-0 z-20 px-5 pt-3 pb-3 bg-transparent">
+      <button class="header-button">
+        <span class="title">Bilgilendirme</span>
+        <span class="material-symbols-outlined" onclick="history.back()">arrow_back</span>
+      </button>
+    </div>
+
+    <main class="flex-grow px-4 sm:px-6 lg:px-8 py-6 pt-[72px]">
+      <div class="mx-auto max-w-2xl">
+        <h1 class="text-text-light dark:text-text-dark tracking-tight text-[32px] font-bold leading-tight text-left pb-3">Cilt.AI Bilgilendirme ve Kullanım Koşulları</h1>
+        <p class="text-text-light dark:text-text-dark text-base font-normal leading-relaxed pb-6 pt-1">Cilt.AI, yapay zeka destekli bir cilt ön analiz uygulamasıdır. Amacımız tıbbi bir tanı koymak değil, cilt sağlığı konusunda farkındalığınızı artırmak ve takip sürecinize yardımcı olmaktır.</p>
+
+        <h2 class="text-text-light dark:text-text-dark text-[22px] font-bold leading-tight tracking-[-0.015em] text-left pb-3 pt-5">Uygulamanın Amacı ve Kapsamı</h2>
+        <p class="text-text-light dark:text-text-dark text-base font-normal leading-relaxed pb-3 pt-1">Uygulama, genel cilt sağlığı bilincini artırmayı hedefler. Yüklediğiniz görselleri analiz ederek size ön bilgi sunar ve zaman içindeki değişimleri takip etmenize olanak tanır.</p>
+
+        <div class="mt-8 mb-8 overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700">
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead class="bg-gray-50 dark:bg-gray-800">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400" scope="col">Neler Yapabiliriz?</th>
+                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400" scope="col">Neler Yapamayız?</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-background-light dark:bg-background-dark">
+              <tr>
+                <td class="px-6 py-4 text-sm font-medium text-text-light dark:text-text-dark">Cilt lekelerinin görünümünü analiz etme</td>
+                <td class="px-6 py-4 text-sm font-medium text-text-light dark:text-text-dark">Tıbbi teşhis koyma</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 text-sm font-medium text-text-light dark:text-text-dark">Değişimleri takip etme</td>
+                <td class="px-6 py-4 text-sm font-medium text-text-light dark:text-text-dark">Reçete yazma</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 text-sm font-medium text-text-light dark:text-text-dark">Genel bilgi sunma</td>
+                <td class="px-6 py-4 text-sm font-medium text-text-light dark:text-text-dark">Doktor muayenesinin yerini tutma</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="text-text-light dark:text-text-dark text-[22px] font-bold leading-tight tracking-[-0.015em] text-left pb-3 pt-5">Gizlilik ve Veri Güvenliği</h2>
+        <p class="text-text-light dark:text-text-dark text-base font-normal leading-relaxed pb-3 pt-1">Yüklediğiniz tüm veriler, yüksek güvenlik standartlarıyla korunur. Kişisel bilgileriniz üçüncü partilerle paylaşılmaz.</p>
+
+        <h2 class="text-text-light dark:text-text-dark text-[22px] font-bold leading-tight tracking-[-0.015em] text-left pb-3 pt-5">Önemli Uyarılar</h2>
+        <p class="text-text-light dark:text-text-dark text-base font-normal leading-relaxed pb-6 pt-1">Uygulama sonuçları kesin tıbbi geçerliliği olmayan ön bilgilendirme niteliğindedir. Cildinizle ilgili şüpheli durumda bir dermatoloğa danışın.</p>
+
+        <p class="text-center text-base text-gray-600 dark:text-gray-400 py-4">Daha fazla bilgi için <a class="font-semibold text-primary dark:text-primary/90 hover:underline" href="#">Sıkça Sorulan Sorular</a> sayfamızı ziyaret edebilirsiniz.</p>
+
+        <div class="pt-8 pb-6">
+          <a href="info-bilgi.pdf" download class="flex w-full items-center justify-center gap-x-2 rounded-xl bg-accent px-6 py-4 text-base font-bold text-white shadow-lg transition-transform duration-200 ease-in-out hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-background-dark">
+            <span class="material-symbols-outlined">download</span>
+            <span>PDF Olarak İndir</span>
+          </a>
+        </div>
+      </div>
+    </main>
+
+  </div>
+</body>
+</html>

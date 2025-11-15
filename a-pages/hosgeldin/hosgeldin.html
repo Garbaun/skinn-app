@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Giriş Yap</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="../../styles/site.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+  tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#2badee","background-light":"#FFFFFF","background-dark":"#121212","text-light-primary":"#0D1B34","text-dark-primary":"#FFFFFF","text-light-secondary":"#6E7A8A","text-dark-secondary":"#A0AEC0","border-light":"#E2E8F0","border-dark":"#4A5568"},fontFamily:{display:["Plus Jakarta Sans","sans-serif"]},borderRadius:{DEFAULT:"0.75rem"},height:{"11":"2.75rem","12":"3rem","13":"3.25rem","14":"3.5rem","15":"3.75rem","16":"4rem","screen-sm":"calc(100vh - 4rem)","screen-md":"calc(100vh - 6rem)","screen-lg":"calc(100vh - 8rem)"}}}}
+</script>
+<style>
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+/* Responsive height utilities */
+@media (max-height: 760px) {
+  .h-screen-sm { height: calc(100vh - 3rem); }
+  .py-responsive { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+  .text-responsive { font-size: 0.95rem; }
+}
+@media (max-height: 640px) {
+  .h-screen-sm { height: calc(100vh - 2.5rem); }
+  .py-responsive { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+  .text-responsive { font-size: 0.875rem; }
+}
+@media (max-height: 480px) {
+  .h-screen-sm { height: calc(100vh - 2rem); }
+  .py-responsive { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+  .text-responsive { font-size: 0.8rem; }
+}
+</style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="flex flex-col h-screen">
+  <main class="flex-grow flex flex-col justify-center items-center px-6 sm:px-8">
+    <div class="w-full max-w-sm">
+      <img src="../../image/logo.png" alt="Logo" class="h-60 mx-auto mb-8 object-contain"/>
+      <h1 class="text-3xl font-bold text-center text-[#617c89] dark:text-white mb-12">Hoşgeldin</h1>
+      <form id="login-form" class="space-y-6">
+        <div>
+          <label class="block text-lg font-medium text-[#617c89] dark:text-white mb-2" for="email">E-posta veya Telefon Numarası</label>
+          <input class="entry-input block w-full rounded-md border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light-primary dark:text-text-dark-primary placeholder:text-text-light-secondary dark:placeholder:text-text-dark-secondary focus:ring-primary focus:border-primary text-responsive py-responsive" id="email" name="email" placeholder="E-postanızı veya telefon numaranızı girin" type="text"/>
+        </div>
+        <div>
+          <label class="block text-lg font-medium text-[#617c89] dark:text-white mb-2" for="password">Şifre</label>
+          <div class="relative">
+            <input class="entry-input block w-full rounded-md border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light-primary dark:text-text-dark-primary placeholder:text-text-light-secondary dark:placeholder:text-text-dark-secondary focus:ring-primary focus:border-primary text-responsive py-responsive" id="password" name="password" placeholder="Şifrenizi girin" type="password"/>
+            <button class="absolute inset-y-0 right-0 flex items-center pr-3 text-text-light-secondary dark:text-text-dark-secondary" type="button"><span class="material-icons-outlined">visibility</span></button>
+          </div>
+        </div>
+        <div class="text-right">
+          <a class="text-sm font-medium text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors" href="../sifre/sifremi-unuttum.html">Şifremi Unuttum?</a>
+        </div>
+        <div class="pt-4 space-y-4">
+          <button id="login-btn" class="w-full flex justify-center py-responsive px-4 border border-transparent rounded-xl shadow-sm text-responsive font-bold text-white bg-primary hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-opacity" type="submit">Giriş Yap</button>
+          <a id="signup-btn" class="w-full flex justify-center py-responsive px-4 border-2 border-primary rounded-xl shadow-sm text-responsive font-bold text-primary bg-transparent hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors" href="#">Yeni Kullanıcıyım, Kayıt Ol</a>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+<script>
+  function setStr(k,v){try{localStorage.setItem(k,String(v))}catch(_){}}
+  const form=document.getElementById('login-form');
+  const loginBtn=document.getElementById('login-btn');
+  const signupBtn=document.getElementById('signup-btn');
+  if(form){form.addEventListener('submit',function(e){ e.preventDefault(); const v=(document.getElementById('email').value||'').trim(); if(!v) return; setStr('kullaniciTipi','sahis'); setStr('kullaniciAd', v); setStr('kullaniciEmail', v); window.location.href='../ana-sayfa/ana-sayfa.html' })}
+  if(signupBtn){signupBtn.addEventListener('click',function(e){ e.preventDefault(); window.location.href='../kayit/profil-olustur.html' })}
+</script>
+</body></html>

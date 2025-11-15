@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cilt.AI Fotoğraf Yükleme</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#2badee",
+            "background-light": "#f6f8f8",
+            "background-dark": "#101f22",
+            "text-primary": "#1A237E",
+            "border-light": "#E0E0E0",
+            "accent": "#FFDAB9",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: 100vh;
+    }
+  </style>
+<style>
+    body {
+      min-height: 100vh;
+    }
+  </style>
+<style>
+    body {
+      min-height: 100vh;
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden text-text-primary">
+<div class="site-header fixed top-0 left-0 right-0 z-20 px-5 pt-3 pb-3 bg-transparent">
+  <button class="header-button">
+    <span class="title">Fotoğraf Yükle</span>
+    <span class="material-symbols-outlined">arrow_back</span>
+  </button>
+</div>
+<div class="flex-grow flex flex-col p-4 pt-[72px]">
+<div class="relative flex flex-col items-center justify-center w-full p-6 border-2 border-dashed border-border-light dark:border-gray-700 rounded-xl cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 mb-6">
+<span class="material-symbols-outlined text-4xl text-primary mb-2">upload_file</span>
+<p class="text-lg font-bold text-text-primary dark:text-gray-200">Fotoğraf seçmek için dokunun</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">En fazla 3 fotoğraf yükleyebilirsiniz</p>
+</div>
+<div class="mb-6">
+<h3 class="text-text-primary dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] mb-4">Fotoğraf Bölgesi Seçimi</h3>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex w-full min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-11 px-3 bg-white dark:bg-gray-700 border border-border-light dark:border-gray-600 text-text-primary dark:text-white text-sm font-bold leading-normal tracking-[0.015em] touch-target">Baş</button>
+<button class="flex w-full min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-11 px-3 bg-white dark:bg-gray-700 border border-border-light dark:border-gray-600 text-text-primary dark:text-white text-sm font-bold leading-normal tracking-[0.015em]">Boyun</button>
+<button class="flex w-full min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-11 px-3 bg-white dark:bg-gray-700 border border-border-light dark:border-gray-600 text-text-primary dark:text-white text-sm font-bold leading-normal tracking-[0.015em]">El ve Ayak</button>
+<button class="flex w-full min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-11 px-3 bg-white dark:bg-gray-700 border border-border-light dark:border-gray-600 text-text-primary dark:text-white text-sm font-bold leading-normal tracking-[0.015em]">Kol ve Bacak</button>
+<button class="flex w-full min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-11 px-3 bg-white dark:bg-gray-700 border border-border-light dark:border-gray-600 text-text-primary dark:text-white text-sm font-bold leading-normal tracking-[0.015em]">Vücut</button>
+<button class="flex w-full min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-11 px-3 bg-white dark:bg-gray-700 border border-border-light dark:border-gray-600 text-text-primary dark:text-white text-sm font-bold leading-normal tracking-[0.015em]">Genital</button>
+</div>
+</div>
+<div class="mb-6 p-4 rounded-xl bg-accent/20 dark:bg-accent/10 border border-accent/50 dark:border-accent/30">
+<h3 class="text-text-primary dark:text-white text-base font-bold leading-tight tracking-[-0.015em] mb-3 text-center">Çekim Yönergeleri</h3>
+<div class="grid grid-cols-3 gap-2 text-center text-text-primary/80 dark:text-gray-300">
+<div class="flex flex-col items-center gap-1.5">
+<span class="material-symbols-outlined text-3xl text-primary">light_mode</span>
+<p class="text-xs font-medium leading-tight">İyi ışık alan bir yerde çekin.</p>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<span class="material-symbols-outlined text-3xl text-primary">center_focus_strong</span>
+<p class="text-xs font-medium leading-tight">Net bir şekilde odaklayın.</p>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<span class="material-symbols-outlined text-3xl text-primary">zoom_in</span>
+<p class="text-xs font-medium leading-tight">Mümkün olduğunca yakın çekin.</p>
+</div>
+</div>
+</div>
+<div class="mt-4 p-3 rounded-lg bg-green-100/70 dark:bg-green-900/30 border border-green-200 dark:border-green-800/50 flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-green-600 dark:text-green-400">check_circle</span>
+<p class="text-sm font-medium text-green-800 dark:text-green-300">3/3 fotoğraf yüklendi. Analize hazırsınız.</p>
+</div>
+<h3 class="text-text-primary dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-0 pb-3 pt-2">Yüklenen Fotoğraflar (3/3)</h3>
+<div class="grid grid-cols-3 gap-3">
+<div class="flex flex-col gap-2">
+<div class="relative w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg" data-alt="User's uploaded front view photo for skin analysis" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAdjDd1PD-1XBTIR8jB3FIS9ABDK1efXJQU8gIGOH_PPA8juPCbPWZd9U6Oo1TkOAanls4V4iF3uGzy3sUXWBomN0tKyORR6jGNOSvHiPZ_QFFJcohvA6SFZlJv-nt6g3P4uGRfQMPHDG-wHSJbHw6gQhzw0O4EGXAm9LgH5qre1Q8g5ZQwvpk0ZrUJXXCY3pnyBQE5Qj6lM5k3d2nXvuzE0I0LYwRkWoVoHKzfd1iFxWEyZCAoK-sMw_McUwYZAcrBkXrbW_rvWgM_");'>
+<div class="absolute top-1.5 right-1.5 flex gap-1">
+<button class="flex items-center justify-center size-6 rounded-full bg-black/60 text-white hover:bg-black/80">
+<span class="material-symbols-outlined text-sm">crop_rotate</span>
+</button>
+<button class="flex items-center justify-center size-6 rounded-full bg-black/60 text-white hover:bg-black/80">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+<div class="absolute bottom-1.5 left-1.5 right-1.5 px-1 py-0.5 bg-primary/80 rounded-full text-white text-[10px] font-bold text-center backdrop-blur-sm">Baş</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="relative w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg" data-alt="User's second uploaded photo for skin analysis" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAdjDd1PD-1XBTIR8jB3FIS9ABDK1efXJQU8gIGOH_PPA8juPCbPWZd9U6Oo1TkOAanls4V4iF3uGzy3sUXWBomN0tKyORR6jGNOSvHiPZ_QFFJcohvA6SFZlJv-nt6g3P4uGRfQMPHDG-wHSJbHw6gQhzw0O4EGXAm9LgH5qre1Q8g5ZQwvpk0ZrUJXXCY3pnyBQE5Qj6lM5k3d2nXvuzE0I0LYwRkWoVoHKzfd1iFxWEyZCAoK-sMw_McUwYZAcrBkXrbW_rvWgM_"); transform: scaleX(-1);'>
+<div class="absolute top-1.5 right-1.5 flex gap-1">
+<button class="flex items-center justify-center size-6 rounded-full bg-black/60 text-white hover:bg-black/80">
+<span class="material-symbols-outlined text-sm">crop_rotate</span>
+</button>
+<button class="flex items-center justify-center size-6 rounded-full bg-black/60 text-white hover:bg-black/80">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+<div class="absolute bottom-1.5 left-1.5 right-1.5 px-1 py-0.5 bg-primary/80 rounded-full text-white text-[10px] font-bold text-center backdrop-blur-sm">Kol ve Bacak</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="relative w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg" data-alt="User's third uploaded photo for skin analysis" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAdjDd1PD-1XBTIR8jB3FIS9ABDK1efXJQU8gIGOH_PPA8juPCbPWZd9U6Oo1TkOAanls4V4iF3uGzy3sUXWBomN0tKyORR6jGNOSvHiPZ_QFFJcohvA6SFZlJv-nt6g3P4uGRfQMPHDG-wHSJbHw6gQhzw0O4EGXAm9LgH5qre1Q8g5ZQwvpk0ZrUJXXCY3pnyBQE5Qj6lM5k3d2nXvuzE0I0LYwRkWoVoHKzfd1iFxWEyZCAoK-sMw_McUwYZAcrBkXrbW_rvWgM_"); filter: saturate(1.2);'>
+<div class="absolute top-1.5 right-1.5 flex gap-1">
+<button class="flex items-center justify-center size-6 rounded-full bg-black/60 text-white hover:bg-black/80">
+<span class="material-symbols-outlined text-sm">crop_rotate</span>
+</button>
+<button class="flex items-center justify-center size-6 rounded-full bg-black/60 text-white hover:bg-black/80">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+<div class="absolute bottom-1.5 left-1.5 right-1.5 px-1 py-0.5 bg-primary/80 rounded-full text-white text-[10px] font-bold text-center backdrop-blur-sm">Vücut</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sticky bottom-0 bg-white dark:bg-background-dark p-4 pt-2 mt-auto border-t border-border-light dark:border-gray-800">
+<button class="flex w-full min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Analizi Başlat</span>
+</button>
+<p class="text-text-primary/60 dark:text-gray-500 text-xs text-center pt-3">
+        Fotoğraflarınız gizli tutulur ve korunur. <a class="underline" href="#">Gizlilik Politikamızı</a> okuyun.
+      </p>
+</div>
+<div class="absolute inset-0 bg-black/60 z-20 flex items-center justify-center p-4">
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg w-full max-w-sm text-center p-6 flex flex-col gap-4">
+<div class="flex flex-col gap-2">
+<h3 class="text-lg font-bold text-text-primary dark:text-white">Bölge Seçimi Gerekli</h3>
+<p class="text-sm text-text-primary/80 dark:text-gray-300">Lütfen yüklediğiniz fotoğrafların hangi vücut bölgesine ait olduğunu seçiniz.</p>
+</div>
+<button class="w-full h-11 px-4 mt-2 rounded-lg bg-primary text-white font-bold">Tamam</button>
+</div>
+</div>
+<div class="absolute inset-0 bg-black/60 z-20 flex items-center justify-center p-4 hidden">
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg w-full max-w-sm text-center p-6 flex flex-col gap-4">
+<div class="flex flex-col gap-2">
+<h3 class="text-lg font-bold text-text-primary dark:text-white">Bölge Seçiniz</h3>
+<p class="text-sm text-text-primary/80 dark:text-gray-300">Lütfen yükleyeceğiniz fotoğrafın hangi vücut bölgesine ait olduğunu seçin.</p>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex w-full min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-11 px-3 bg-primary/10 dark:bg-primary/20 border border-primary/30 text-primary dark:text-primary-300 text-sm font-bold leading-normal tracking-[0.015em]">Baş</button>
+<button class="flex w-full min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-11 px-3 bg-primary/10 dark:bg-primary/20 border border-primary/30 text-primary dark:text-primary-300 text-sm font-bold leading-normal tracking-[0.015em]">Boyun</button>
+<button class="flex w-full min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-11 px-3 bg-primary/10 dark:bg-primary/20 border border-primary/30 text-primary dark:text-primary-300 text-sm font-bold leading-normal tracking-[0.015em]">El ve Ayak</button>
+<button class="flex w-full min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-11 px-3 bg-primary/10 dark:bg-primary/20 border border-primary/30 text-primary dark:text-primary-300 text-sm font-bold leading-normal tracking-[0.015em]">Kol ve Bacak</button>
+<button class="flex w-full min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-11 px-3 bg-primary/10 dark:bg-primary/20 border border-primary/30 text-primary dark:text-primary-300 text-sm font-bold leading-normal tracking-[0.015em]">Vücut</button>
+<button class="flex w-full min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-11 px-3 bg-primary/10 dark:bg-primary/20 border border-primary/30 text-primary dark:text-primary-300 text-sm font-bold leading-normal tracking-[0.015em]">Genital</button>
+</div>
+<button class="w-full h-11 px-4 mt-2 rounded-lg bg-gray-200 dark:bg-gray-600 text-text-primary dark:text-white font-bold">Vazgeç</button>
+</div>
+</div>
+<div class="absolute inset-0 bg-black/60 z-20 flex items-center justify-center p-4 hidden">
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg w-full max-w-sm text-center p-6">
+<h3 class="text-lg font-bold text-text-primary dark:text-white mb-2">Dosya Boyutu Çok Büyük</h3>
+<p class="text-sm text-text-primary/80 dark:text-gray-300 mb-6">Lütfen 10MB'dan küçük bir dosya seçin.</p>
+<div class="flex flex-col gap-3">
+<button class="w-full h-11 px-4 rounded-lg bg-primary text-white font-bold">Anladım</button>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 bg-black/60 z-20 flex items-center justify-center p-4 hidden">
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg w-full max-w-sm text-center p-6">
+<h3 class="text-lg font-bold text-text-primary dark:text-white mb-2">Geçersiz Dosya Formatı</h3>
+<p class="text-sm text-text-primary/80 dark:text-gray-300 mb-6">Lütfen sadece JPG veya PNG formatında resim seçin.</p>
+<button class="w-full h-11 px-4 rounded-lg bg-primary text-white font-bold">Yeniden Seç</button>
+</div>
+</div>
+<div class="absolute inset-0 bg-black/60 z-20 flex items-center justify-center p-4 hidden">
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg w-full max-w-sm text-center p-6">
+<h3 class="text-lg font-bold text-text-primary dark:text-white mb-4">Yükleniyor... (45%)</h3>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mb-6">
+<div class="bg-primary h-2.5 rounded-full" style="width: 45%"></div>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full h-11 px-4 rounded-lg bg-primary text-white font-bold">Arka Planda Bekle</button>
+<button class="w-full h-11 px-4 rounded-lg bg-gray-200 dark:bg-gray-600 text-text-primary dark:text-white font-bold">İptal</button>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 bg-black/60 z-20 flex items-center justify-center p-4 hidden">
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg w-full max-w-sm text-center p-6">
+<span class="material-symbols-outlined text-5xl text-green-500 mb-3">check_circle</span>
+<h3 class="text-lg font-bold text-text-primary dark:text-white mb-2">Yükleme Tamamlandı!</h3>
+<p class="text-sm text-text-primary/80 dark:text-gray-300 mb-6">Fotoğraflarınız başarıyla yüklendi.</p>
+<button class="w-full h-11 px-4 rounded-lg bg-primary text-white font-bold">Sonuçlara Git</button>
+</div>
+</div>
+<div class="absolute inset-0 bg-black/60 z-20 flex items-center justify-center p-4 hidden">
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg w-full max-w-sm text-center p-6">
+<span class="material-symbols-outlined text-5xl text-primary mb-3">image_search</span>
+<h3 class="text-lg font-bold text-text-primary dark:text-white mb-2">Fotoğraf Seçilmedi</h3>
+<p class="text-sm text-text-primary/80 dark:text-gray-300 mb-6">Lütfen analiz için en az bir fotoğraf seçin.</p>
+<button class="w-full h-11 px-4 rounded-lg bg-primary text-white font-bold">Fotoğraf Seç</button>
+</div>
+</div>
+</div>
+</body></html>

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yapay Zeka Cilt Analizi - Fotoğraf Yükleme</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/site.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -16,8 +15,6 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            height: 100vh;
-            overflow-y: auto;
         }
         header {
             display: flex;
@@ -106,8 +103,8 @@
             margin-bottom: 20px;
         }
         .surukle-birak-alani {
-            width: clamp(250px, 80vw, 300px);
-            height: clamp(150px, 30vh, 200px);
+            width: 300px;
+            height: 200px;
             border: 3px dashed #c0c0c0; /* Orta gri çerçeve */
             border-radius: 0;
             display: flex;
@@ -116,7 +113,6 @@
             align-items: center;
             margin-bottom: 20px;
             background-color: #e8e8e8; /* Hafif gri arka plan */
-            max-width: 100%;
         }
         .surukle-birak-alani svg { /* SVG ikonları için stil */
             width: 50px;
@@ -174,14 +170,14 @@
             object-fit: cover;
         }
          .ileri-butonu {
-            background-color: #2badee;
+            background-color: #3498db;
             color: #fff;
             padding: 15px 30px;
-            border: 3px solid #2badee;
+            border: 3px solid #2980b9; /* Kalın çerçeve */
             border-radius: 0;
             font-size: 18px;
             cursor: pointer;
-            transition: opacity 0.2s ease;
+            transition: background-color 0.3s ease;
             margin: 10px auto;
             display: block;
             font-weight: bold;
@@ -190,7 +186,7 @@
         }
 
         .ileri-butonu:hover {
-            opacity: 0.9;
+            background-color: #217dbb;
         }
 
         .ileri-butonu.aktif {
@@ -239,8 +235,8 @@
         }
         /* Resim önizleme alanı için stil */
         #preview-container {
-            width: clamp(250px, 80vw, 300px);
-            height: clamp(150px, 30vh, 200px);
+            width: 300px;
+            height: 200px;
             border: 3px solid #b0b0b0; /* Önceki sürükle bırak alanına benzer bir çerçeve */
             margin-bottom: 20px;
             display: flex;
@@ -248,7 +244,6 @@
             align-items: center;
             background-color: #e8e8e8;
             overflow: hidden; /* Taşmayı engelle */
-            max-width: 100%;
         }
         #preview-container img {
             max-width: 100%;
@@ -259,7 +254,7 @@
     </style>
 </head>
 <body class="acik-tema">
-    <header class="site-header">
+    <header>
         <div class="kredi-button" onclick="window.location.href='kredi-yukle.html'">
             100 Kredi Yüklü <span style="color: red;">Kredi Yükle</span>
         </div>
@@ -288,20 +283,23 @@
                 </div>
 
                 <div class="ek-foto-butonlari">
-                    <button id="yuz-on-button">Ön Yüz Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
-                    <button id="yuz-sol-button">Sol Profil Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
-                    <button id="yuz-sag-button">Sağ Profil Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
+                    <button id="yuz-on-button">Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
+                    <button id="yuz-sol-button">Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucude-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
+                    <button id="yuz-sag-button">Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
+                    <button id="yuz-profil-button">Ekle <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></button>
                     <input type="file" id="dosya-sec" accept="image/*" style="display: none;">
                 </div>
-                <div id="upload-status" style="margin-top:8px; font-weight:bold; color:#555;">Yükleme durumu: Bekleniyor</div>
             </div>
             <div style="display: flex; justify-content: center;">
                 <button id="ileri-buton" class="ileri-butonu" disabled>Karşıya Yükle</button>
             </div>
         </div>
     </main>
+    <footer>
+        <p>Daha fazla bilgi için <a href="info-bilgi.pdf" download>bilgilendirme dosyasını</a> indirebilirsiniz.</p>
+        cilt.ai <span class="kanduras-medya-link" onclick="window.open('http://www.kandurasmedya.com', '_blank')">Kanduras Medya</span> oluşumudur. Tüm Hakları Saklıdır. Copyright 2025 ©
+    </footer>
     <script>
-        (function(){ try{ window.location.href = 'a-pages/foto-yukle/foto-yukle.html' }catch(_){} })();
         const dosyaSec = document.getElementById("dosya-sec");
         const surukleBirakAlani = document.getElementById("surukle-birak-alani");
         const ileriButton = document.getElementById("ileri-buton");
@@ -311,6 +309,7 @@
         const yuzOnButton = document.getElementById("yuz-on-button");
         const yuzSolButton = document.getElementById("yuz-sol-button");
         const yuzSagButton = document.getElementById("yuz-sag-button");
+        const yuzProfilButton = document.getElementById("yuz-profil-button");
 
         let fotoYuklendi = false;
         let uploadedImageBase64 = null; // Base64 verisini saklamak için yeni değişken
@@ -319,6 +318,7 @@
         yuzOnButton.addEventListener("click", () => dosyaSec.click());
         yuzSolButton.addEventListener("click", () => dosyaSec.click());
         yuzSagButton.addEventListener("click", () => dosyaSec.click());
+        yuzProfilButton.addEventListener("click", () => dosyaSec.click());
 
 
         dosyaSec.addEventListener("change", function(event) {
@@ -336,8 +336,6 @@
                     fotoYuklendi = true;
                     ileriButton.classList.add("aktif");
                     ileriButton.disabled = false; // İleri butonunu aktif et
-                    const st = document.getElementById('upload-status');
-                    if (st) { st.textContent = 'Yükleme durumu: Tamamlandı'; st.style.color = '#2e7d32'; }
                 };
                 reader.readAsDataURL(file); // Dosyayı Base64 olarak oku
             } else {
@@ -349,8 +347,6 @@
                 fotoYuklendi = false;
                 ileriButton.classList.remove("aktif");
                 ileriButton.disabled = true;
-                const st = document.getElementById('upload-status');
-                if (st) { st.textContent = 'Yükleme durumu: Bekleniyor'; st.style.color = '#555'; }
             }
         });
 
@@ -381,8 +377,6 @@
                     fotoYuklendi = true;
                     ileriButton.classList.add("aktif");
                     ileriButton.disabled = false; // İleri butonunu aktif et
-                    const st = document.getElementById('upload-status');
-                    if (st) { st.textContent = 'Yükleme durumu: Tamamlandı'; st.style.color = '#2e7d32'; }
                 };
                 reader.readAsDataURL(file); // Dosyayı Base64 olarak oku
             } else {
@@ -395,8 +389,6 @@
                 fotoYuklendi = false;
                 ileriButton.classList.remove("aktif");
                 ileriButton.disabled = true;
-                const st = document.getElementById('upload-status');
-                if (st) { st.textContent = 'Yükleme durumu: Bekleniyor'; st.style.color = '#555'; }
             }
         });
 
@@ -417,7 +409,7 @@
                         }
                     }
                 } catch (e) {}
-                window.location.href = "a-pages/sonuclar/sonuclar.html";
+                window.location.href = "sonuclar.html";
             } else {
                 alert("Lütfen önce bir fotoğraf yükleyin.");
             }

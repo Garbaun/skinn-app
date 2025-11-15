@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profil Oluştur</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="../../styles/site.css" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#2badee", accent: "#FFC1A1", "background-light": "#FFFFFF", "text-dark": "#4A4A4A", "text-light": "#617c89", "border-color": "#E5E7EB", "danger-bg": "#FFFBEB", "danger-text": "#B45309", "danger-border": "#FBBF24" }, fontFamily: { display: ["Inter","sans-serif"] }, borderRadius: { DEFAULT: "0.5rem", lg: "0.75rem", xl: "1rem", full: "9999px" } } } }
+</script>
+<style>
+  body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background-color:#f7fafc}
+  .form-input{background-color:#fff;border:3px solid var(--primary);border-radius:.75rem;padding:.75rem 1rem;font-size:1rem;color:#0B1A30;width:100%;transition:border-color .2s,box-shadow .2s}
+  .form-input:focus{border-color:var(--primary);box-shadow:0 0 0 2px rgba(43,173,238,.2);outline:none}
+  .form-input::placeholder{color:#A0AEC0}
+  select.form-input{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 16'%3e%3crect width='24' height='16' fill='%23e30a17'/%3e%3ccircle cx='10' cy='8' r='4' fill='white'/%3e%3ccircle cx='11' cy='8' r='3' fill='%23e30a17'/%3e%3cpolygon points='14,8 16,7 16,9' fill='white'/%3e%3c/svg%3e"),url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");background-position:.5rem center,right .5rem center;background-repeat:no-repeat;background-size:1.2em .8em,1.5em 1.5em;padding-left:2.5rem;padding-right:2.5rem}
+  .password-toggle{cursor:pointer;position:absolute;right:.75rem;top:50%;transform:translateY(-50%);color:#5A6474}
+  .phone-prefix{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);color:#5A6474}
+</style>
+</head>
+<body class="font-display bg-background-light text-text-dark">
+<div class="flex min-h-screen w-full flex-col items-center justify-start p-4 py-12 sm:justify-center sm:py-4">
+  <div class="w-full max-w-sm">
+    <div class="mb-8 flex flex-col items-center">
+      <h1 class="text-center text-3xl font-bold tracking-tight text-text-dark">Profil Oluştur</h1>
+      <p class="mt-2 text-center text-text-light">Cilt analizi yolculuğunuza başlamak için bilgilerinizi girin.</p>
+    </div>
+    <form id="signup-form" class="w-full space-y-4">
+      <div class="space-y-1">
+        <select class="form-input h-12" id="language-selector" name="language">
+          <option selected>Türkçe</option>
+          <option>English</option>
+          <option>Deutsch</option>
+        </select>
+      </div>
+      <div class="flex flex-col gap-4 sm:flex-row">
+        <div class="flex-1">
+          <label class="sr-only" for="ad">Ad</label>
+          <input class="form-input h-12" id="ad" name="ad" placeholder="Ad" required type="text"/>
+        </div>
+        <div class="flex-1">
+          <label class="sr-only" for="soyad">Soyad</label>
+          <input class="form-input h-12" id="soyad" name="soyad" placeholder="Soyad" required type="text"/>
+        </div>
+      </div>
+      <div>
+        <label class="sr-only" for="telefon_numarasi">Telefon Numarası</label>
+        <div id="telefon-wrapper" class="relative">
+          <span id="phone-prefix" class="phone-prefix">+90</span>
+          <input class="form-input h-12 pl-14" id="telefon_numarasi" inputmode="tel" name="telefon_numarasi" pattern="[0-9]*" placeholder="Telefon Numarası" required type="text"/>
+        </div>
+      </div>
+      <div>
+        <label class="sr-only" for="email_kayit">E-posta</label>
+        <input class="form-input h-12" id="email_kayit" name="email" placeholder="E-posta" required type="email"/>
+      </div>
+      <div>
+        <label class="sr-only" for="sifre_kayit">Şifre</label>
+        <div class="relative">
+          <input class="form-input h-12 pr-10" id="sifre_kayit" name="password" placeholder="Şifre" required type="password"/>
+        </div>
+      </div>
+      <div class="flex items-start">
+        <input class="mt-0.5 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" id="terms-checkbox" name="terms" type="checkbox"/>
+        <label class="ml-2 text-sm text-text-light" for="terms-checkbox"><a class="font-medium text-primary hover:underline" href="#">Kullanıcı Sözleşmesini</a> ve <a class="font-medium text-primary hover:underline" href="#">Gizlilik Politikasını</a> okudum ve kabul ediyorum.</label>
+      </div>
+      <div class="space-y-3 pt-2">
+        <button class="flex w-full items-center justify-center rounded-lg bg-primary btn-primary py-3 text-lg font-semibold text-white transition-opacity hover:opacity-90" type="submit">Kaydet</button>
+        <button class="group flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white py-3 text-lg font-medium text-gray-700 transition-colors hover:bg-gray-50" type="button"><svg class="mr-3 h-5 w-5" height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12 s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z" fill="#FFC107"></path><path d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36 c-5.222,0-9.617-3.356-11.283-7.946l-6.522 5.025C9.505,39.556,16.227,44,24,44z" fill="#4CAF50"></path><path d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.574l6.19,5.238C44.434,36.336,48,30.455,48,24C48,22.659,47.862,21.35,47.611,20.083z" fill="#1976D2"></path></svg>Google ile Kayıt Ol</button>
+      </div>
+    </form>
+    <p class="mt-8 text-center text-sm text-text-light">Zaten bir hesabın var mı? <a class="font-semibold text-primary hover:underline" href="../hosgeldin/hosgeldin.html">Giriş Yap</a></p>
+  </div>
+</div>
+<script>
+  function setStr(k,v){try{localStorage.setItem(k,String(v))}catch(_){}}
+  const form=document.getElementById('signup-form');
+  const langSel=document.getElementById('language-selector');
+  const prefixEl=document.getElementById('phone-prefix');
+  const codeMap={"Türkçe":"+90","English":"+1","Deutsch":"+49"};
+  function updatePrefix(){ try{ const v=langSel.value; prefixEl.textContent = codeMap[v] || "+90" }catch(_){} }
+  if(langSel){ langSel.addEventListener('change', updatePrefix); updatePrefix() }
+  if(form){form.addEventListener('submit',function(e){ e.preventDefault(); const ad=(document.getElementById('ad').value||'').trim(); const soyad=(document.getElementById('soyad').value||'').trim(); const tel=(document.getElementById('telefon_numarasi').value||'').trim(); const email=(document.getElementById('email_kayit').value||'').trim(); const terms=document.getElementById('terms-checkbox').checked; if(!ad||!soyad||!tel||!email||!terms) return; const code=(prefixEl&&prefixEl.textContent)||"+90"; setStr('kullaniciTipi','sahis'); setStr('kullaniciAd',(ad+' '+soyad).trim()); setStr('kullaniciTelefon', (code+' '+tel).trim()); setStr('kullaniciEmail',email); window.location.href='../ana-sayfa/ana-sayfa.html' })}
+</script>
+</body></html>

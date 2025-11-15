@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ana Sayfa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="../../styles/site.css" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#2badee",
+            "background-light": "#F7F9FC",
+            "background-dark": "#101c22",
+            "text-primary": "#333333",
+            "text-secondary": "#617c89",
+            "card-light": "#FFFFFF",
+            "card-dark": "#1A2830"
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+    body {
+      min-height: 100vh;
+    }
+  </style>
+<style>
+    body {
+      min-height: 100vh;
+    }
+  </style>
+<style>
+    body {
+      min-height: 100vh;
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-primary dark:text-gray-200">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden pb-24 pt-[72px]">
+<div class="site-header fixed top-0 left-0 right-0 z-20 px-5 pt-3 pb-3 bg-transparent" style="z-index:60">
+  <button class="relative w-full rounded-full h-14 bg-primary text-white text-lg font-bold leading-normal tracking-[0.015em] shadow-none opacity-100" style="box-shadow: 0 6px 12px rgba(74,74,74,0.35)">
+    <span class="block text-center text-3xl" style="text-shadow: 0 2px 4px rgba(74,74,74,0.85)">Merhaba</span>
+    <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-white text-[2rem]" style="text-shadow: 0 2px 4px rgba(74,74,74,0.85)" onclick="window.location.href='../ayarlar/ayarlar.html'">settings</span>
+  </button>
+</div>
+  <div class="w-full px-5">
+  <img src="../../image/betaver.png" alt="Beta Versiyon" class="w-full h-auto block" style="position:fixed; top:72px; left:5%; width:90%; z-index:50; pointer-events:none;"/>
+  </div>
+<div class="px-5">
+<p id="identity" class="text-[#4A4A4A] dark:text-white text-lg font-medium leading-tight mt-1"></p>
+</div>
+<div class="px-5 pt-2 flex justify-center">
+  <img src="../../image/logo.png" alt="Logo" class="h-[13.44rem] object-contain" style="transform: translateY(-5%)"/>
+</div>
+<div class="grid grid-cols-3 gap-3 px-5 pt-2">
+  <div class="flex flex-col items-center gap-2 rounded-xl bg-background-light p-3 shadow-[0_4px_16px_rgba(0,0,0,0.07)] dark:bg-slate-800 dark:shadow-[0_4px_16px_rgba(0,0,0,0.2)] card-shadow">
+    <div class="relative flex size-20 items-center justify-center">
+      <svg class="size-full -rotate-90" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" fill="none" r="52" stroke="#e6f7fd" stroke-width="16"></circle>
+        <circle cx="60" cy="60" fill="none" r="52" stroke="#ffb4a2" stroke-dasharray="326.73" stroke-dashoffset="179.70" stroke-linecap="round" stroke-width="16"></circle>
+      </svg>
+      <div class="absolute flex flex-col items-center justify-center">
+        <span class="text-lg font-bold text-[#646464] dark:text-white">45<span class="text-sm font-semibold">%</span></span>
+      </div>
+    </div>
+    <p class="text-xs font-bold text-[#646464] dark:text-white">Havadaki Nem</p>
+  </div>
+  <div class="flex flex-col items-center gap-2 rounded-xl bg-background-light p-3 shadow-[0_4px_16px_rgba(0,0,0,0.07)] dark:bg-slate-800 dark:shadow-[0_4px_16px_rgba(0,0,0,0.2)] card-shadow">
+    <div class="relative flex size-20 items-center justify-center">
+      <svg class="size-full -rotate-90" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" fill="none" r="52" stroke="#e6f7fd" stroke-width="16"></circle>
+        <circle cx="60" cy="60" fill="none" r="52" stroke="#ffb4a2" stroke-dasharray="326.73" stroke-dashoffset="147.03" stroke-linecap="round" stroke-width="16"></circle>
+      </svg>
+      <div class="absolute flex flex-col items-center justify-center">
+        <span class="text-lg font-bold text-[#646464] dark:text-white">22<span class="text-sm font-semibold">°C</span></span>
+      </div>
+    </div>
+    <p class="text-xs font-bold text-[#646464] dark:text-white">Hava Sıcaklığı</p>
+  </div>
+  <div class="flex flex-col items-center gap-2 rounded-xl bg-background-light p-3 shadow-[0_4px_16px_rgba(0,0,0,0.07)] dark:bg-slate-800 dark:shadow-[0_4px_16px_rgba(0,0,0,0.2)] card-shadow">
+    <div class="relative flex size-20 items-center justify-center">
+      <svg class="size-full -rotate-90" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" fill="none" r="52" stroke="#e6f7fd" stroke-width="16"></circle>
+        <circle cx="60" cy="60" fill="none" r="52" stroke="#ffb4a2" stroke-dasharray="326.73" stroke-dashoffset="114.35" stroke-linecap="round" stroke-width="16"></circle>
+      </svg>
+      <div class="absolute flex flex-col items-center justify-center">
+        <span class="text-lg font-bold text-[#646464] dark:text-white">65<span class="text-sm font-semibold">%</span></span>
+      </div>
+    </div>
+    <p class="text-xs font-bold text-[#646464] dark:text-white">Nem Seviyesi</p>
+  </div>
+</div>
+<div class="p-4 pt-2">
+<div class="relative flex flex-col justify-center rounded-xl bg-[#FFF3E0] dark:bg-[#5D4037] p-4 shadow-sm min-h-[90px] card-shadow">
+<div class="flex w-full flex-col">
+<p class="text-lg font-bold leading-tight tracking-[-0.015em] text-[#4A4A4A]">Günün İpucu</p>
+<p class="mt-1 text-2xl font-medium leading-tight text-[#4A4A4A]">Bol su içmek, cildinizin nemini ve elastikiyetini korur.</p>
+</div>
+</div>
+</div>
+
+<div class="grid grid-cols-1 gap-4 px-5 pt-2 pb-6">
+<div class="flex items-center gap-4 rounded-[2rem] bg-[#E0F7FA] dark:bg-[#004D40] p-4 shadow-sm cursor-pointer card-shadow" onclick="window.location.href='../gecmis/gecmis-analiz.html'">
+<div class="flex items-center justify-center size-12 rounded-lg bg-white/50 dark:bg-black/20">
+<span class="material-symbols-outlined text-[#00796B] dark:text-[#80CBC4] text-3xl">history</span>
+</div>
+<p class="text-[#4A4A4A] text-xl font-medium leading-tight">Analiz geçmişi</p>
+</div>
+<div class="flex items-center gap-4 rounded-[2rem] bg-[#E8F5E9] dark:bg-[#1B5E20] p-4 shadow-sm cursor-pointer card-shadow" onclick="window.location.href='../../iyilesme-takibi.html'">
+<div class="flex items-center justify-center size-12 rounded-lg bg-white/50 dark:bg-black/20">
+<span class="material-symbols-outlined text-[#2E7D32] dark:text-[#A5D6A7] text-3xl">timeline</span>
+</div>
+<p class="text-[#4A4A4A] text-xl font-medium leading-tight">İyileşme Takibi</p>
+</div>
+<div class="flex items-center gap-4 rounded-[2rem] bg-[#FFF3E0] dark:bg-[#5D4037] p-4 shadow-sm cursor-pointer card-shadow" onclick="window.location.href='../yardimci-urunler/yardimci-urunler.html'">
+<div class="flex items-center justify-center size-12 rounded-lg bg-white/50 dark:bg-black/20">
+<span class="material-symbols-outlined text-[#F57C00] dark:text-[#FFCC80] text-3xl">spa</span>
+</div>
+<p class="text-[#4A4A4A] text-xl font-medium leading-tight">Yardımcı Ürünler</p>
+</div>
+<div class="flex items-center gap-4 rounded-[2rem] bg-[#F3E5F5] dark:bg-[#4A148C] p-4 shadow-sm cursor-pointer card-shadow" onclick="window.location.href='../kredi-yukle/kredi-yukle.html'">
+<div class="flex items-center justify-center size-12 rounded-lg bg-white/50 dark:bg-black/20">
+<span class="material-symbols-outlined text-[#7B1FA2] dark:text-[#CE93D8] text-3xl">toll</span>
+</div>
+<p class="text-[#4A4A4A] text-xl font-medium leading-tight">Kullanılabilir Kredi: <span id="credits-available">100</span></p>
+</div>
+</div>
+<div class="footer-bar">
+  <button id="start-analysis" class="footer-button bg-primary text-white btn-shadow">Analize Başla</button>
+</div>
+<div id="credits-modal" class="absolute inset-0 bg-black/60 z-30 hidden items-center justify-center p-4">
+  <div class="bg-white dark:bg-background-dark rounded-xl shadow-lg w-full max-w-sm text-center p-6 flex flex-col gap-4">
+    <div class="flex flex-col gap-2">
+      <h3 class="text-lg font-bold text-[#4A4A4A] dark:text-white">Yetersiz Kredi</h3>
+      <p class="text-sm text-[#617c89] dark:text-gray-300">Analize başlamak için kredi gereklidir. Lütfen kredi yükleyin.</p>
+    </div>
+    <div class="flex flex-col gap-3">
+      <button id="go-credits" class="w-full h-11 px-4 rounded-lg bg-primary text-white font-bold">Kredi Yükle</button>
+      <button id="credits-close" class="w-full h-11 px-4 rounded-lg bg-gray-200 dark:bg-gray-600 text-[#4A4A4A] dark:text-white font-bold">Kapat</button>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+  function getStr(k,d){try{const v=localStorage.getItem(k);return v?String(v):d}catch(_){return d}}
+  function getNum(k,d){try{const v=parseInt(localStorage.getItem(k)||String(d),10);return isNaN(v)?d:v}catch(_){return d}}
+  (function(){
+    const tip=getStr('kullaniciTipi','sahis');
+    const ad=getStr('kullaniciAd','');
+    const klinikAd=getStr('klinikAd','');
+    const klinikId=getStr('klinikId', klinikAd || '');
+    const greet=document.getElementById('greeting');
+    const identity=document.getElementById('identity');
+    if(greet){ greet.textContent = 'Merhaba' }
+    if(identity){ identity.textContent = tip==='klinik' ? (klinikId||'') : (ad||'') }
+    const creditsEl=document.getElementById('credits-available'); if(creditsEl){ creditsEl.textContent = String(getNum('krediBakiyesi',100)) }
+    const startBtn=document.getElementById('start-analysis'); const cm=document.getElementById('credits-modal'); const cmClose=document.getElementById('credits-close'); const goCredits=document.getElementById('go-credits');
+    if(startBtn){ startBtn.addEventListener('click',()=>{ const c=getNum('krediBakiyesi',0); if(c<=0){ if(cm){ cm.classList.remove('hidden'); cm.classList.add('flex') } } else { window.location.href='../hazirlik/hazirlik.html' } }) }
+    if(cmClose){ cmClose.addEventListener('click',()=>{ if(cm){ cm.classList.add('hidden'); cm.classList.remove('flex') } }) }
+    if(goCredits){ goCredits.addEventListener('click',()=>{ window.location.href='../kredi-yukle/kredi-yukle.html' }) }
+  })();
+  </script>
+</body></html>

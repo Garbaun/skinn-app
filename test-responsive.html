@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Height Test</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <style>
+        .test-container {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+        .test-box {
+            width: clamp(200px, 50vw, 300px);
+            height: clamp(100px, 20vh, 200px);
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+        }
+        .info {
+            padding: 20px;
+            background: #f0f0f0;
+            margin: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Responsive Height Test</h1>
+        <div class="info">
+            <h3>Bu sayfa responsive height testi içindir</h3>
+            <p>Ekran yüksekliğini değiştirerek kutuların nasıl uyum sağladığını gözlemleyin:</p>
+            <ul>
+                <li><strong>Geniş Kutu:</strong> Yüksekliği 20vh - 50vh arasında değişir</li>
+                <li><strong>Orta Kutu:</strong> Yüksekliği 15vh - 30vh arasında değişir</li>
+                <li><strong>Küçük Kutu:</strong> Yüksekliği 10vh - 20vh arasında değişir</li>
+            </ul>
+        </div>
+        
+        <div class="test-container" style="height: clamp(200px, 40vh, 400px);">
+            <div class="test-box" style="height: clamp(100px, 20vh, 200px);">
+                Büyük Kutu<br>20vh-40vh
+            </div>
+        </div>
+        
+        <div class="test-container" style="height: clamp(150px, 30vh, 300px);">
+            <div class="test-box" style="height: clamp(80px, 15vh, 150px);">
+                Orta Kutu<br>15vh-30vh
+            </div>
+        </div>
+        
+        <div class="test-container" style="height: clamp(100px, 20vh, 200px);">
+            <div class="test-box" style="height: clamp(60px, 10vh, 120px);">
+                Küçük Kutu<br>10vh-20vh
+            </div>
+        </div>
+        
+        <div class="info">
+            <p><strong>Başarılı Test:</strong> Tüm kutular ekran yüksekliğine göre orantılı olarak küçülüp büyüyorsa, responsive height düzgün çalışıyor demektir.</p>
+        </div>
+    </div>
+</body>
+</html>

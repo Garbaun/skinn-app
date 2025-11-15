@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yardımcı Ürünler</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2bbaee",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101d22",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<link href="../../styles/site.css" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: 100vh;
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="site-header fixed top-0 left-0 right-0 z-20 px-5 pt-3 pb-3 bg-transparent">
+  <button class="header-button">
+    <span class="title">Yardımcı Ürünler</span>
+    <span class="material-symbols-outlined" onclick="history.back()">arrow_back</span>
+  </button>
+</div>
+<main class="flex-grow pb-28 pt-[96px]"> <!-- Padding-top to avoid overlap with header-button -->
+<!-- HeaderImage -->
+<div class="@container px-4">
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden rounded-lg min-h-[218px] card-shadow" data-alt="A serene image of water droplets on a leaf, representing natural skincare." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDw_z7e3sfSDzOp65p6YcQik5kQIUbNFS9PLAp4e9vmN6_L9TgvGrdb3BDJrstcZN0jdRh8wAzH8yyKRSY-juEX_Bf9ELApkcMuMRRQLE6HUM0JBEx_8QDoeGf3kkjo5sgP6OCRxwkHQERtOv8e_PrVKU2UMeKHLvvDG32jrKuZv2ZwzJNPX4kOP4fzY9MCzT2LREdpaiqXPWNifkuOOWeNBXmidCVxY-3W-dv35Wrq_l8FNUUPaFvwF99v3BdDuaiOQVlKJSB88HCI");'></div>
+</div>
+<!-- SectionHeader -->
+<h2 class="text-slate-900 dark:text-slate-50 text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Sizin İçin Önerilenler</h2>
+<!-- ImageGrid -->
+<div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-4 px-4">
+<div id="nemlendirici" class="flex flex-col gap-3 pb-3">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded card-shadow" data-alt="A white jar of moisturizing face cream." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCD1JUEJIaONIR6u3Rk6eJx2PiS7HzPfXh_vmGA5q1ECagLf-AhYFPWMni5n2c79qDHsaaRT2S36K0bKLb_334ENEhOeSSfRxHOiit39akPehXzUZDN3bvKCjFQZmde-5DPKUn2Ca2ZFkQeSv7eViYlzXKPrd_LPTzB8QY1XnUjrvpoH5U3of2R85JUil2iAFjdIE6SXSBiWt2Kn9DZGFs0uVYPTdYs4pUTPTaNRCRP9dFy7MIPxVVmAMb9QVEVuWxuI0m5jEkLb0VP");'></div>
+<div>
+<p class="text-slate-800 dark:text-slate-200 text-base font-medium leading-normal">Nemlendirici Yüz Kremi</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Cildi derinlemesine nemlendirir ve korur.</p>
+</div>
+</div>
+<div id="gunes-kremi" class="flex flex-col gap-3 pb-3">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded card-shadow" data-alt="A clear bottle of purifying face cleansing gel." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuALMK4XUF6viIl6L90PWNc__GMxDkU2lnkgpbUDyGYtSTiHucI1LZ-xbUm8V2IBoltSjf3-bhtAR2kIZsuaPqTfPMUBcB2QMLsZj_x_fdmvCYXF8N4_BJIdvIQZ4Zn53QmVlVoglA1_QeaesNLWeFihWUh5wkjihf5qZ2w2W9ZTDjHoKLsTPq4huC_dmH9m_v1LGWFEfbBX7I2Htwwwhd6oOBPLAVLuPdLe3RVu3X8FwB50N7P9RCZQ-N9xJxouDGj5LItnV1HhDLgf");'></div>
+<div>
+<p class="text-slate-800 dark:text-slate-200 text-base font-medium leading-normal">Arındırıcı Yüz Temizleme Jeli</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Gözenekleri temizler ve cildi tazeler.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 pb-3">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded card-shadow" data-alt="A white tube of sunscreen lotion." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCK1aNs8MS_KZQ1dJ_rw5czImWUp7517_z7c7XUQvDww_2V0L9qo39J0HBjONmEoZxg-NLu4i4Ipf5Yf4vfkofkgQhZE9T9LBujcLElB4ShoQrerJGZ9lefxay-gVMZ9RML-u_EAQ9LUQyyHelPT4OpHGah9FLvMOyaA31O5v3IzgnTgQqbrb0l82HlqFwnMacj6BI0tCtaItiNUq0cuPU22oTn9aVd11p3veSNNpcTRyTFelogbJZ94XpHI43D42ePV5-KwJJ9rMz_");'></div>
+<div>
+<p class="text-slate-800 dark:text-slate-200 text-base font-medium leading-normal">Güneş Koruyucu Losyon</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">UV ışınlarına karşı yüksek koruma sağlar.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 pb-3">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded card-shadow" data-alt="A small bottle with a dropper containing eye serum." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDMT2fYdh27QHbnJUmNbCoKvQAhfpvQqwSHItz_o_Tqk9wzcNPHFLQRlxXXHNGQ7Ce-B3QeTcie5h7no0XDkPn856WynqXHkrqiKffjnIQOClseVVWpP1a-ARq-JoC-cRtXCygEmhjNd-mpEk4_udk2uP7J7DTdKLlntnmxKutPlRXWEXVyGesmBxFFN9HMgdoClXze5J5sBWpmsja_NLHkpNetftCRd-ADRX6_gBjOtNtNevaS_6CY_h6JcOP3vpYnj9x0p0TfrUxl");'></div>
+<div>
+<p class="text-slate-800 dark:text-slate-200 text-base font-medium leading-normal">Canlandırıcı Göz Serumu</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Göz çevresindeki yorgunluk belirtilerini azaltır.</p>
+</div>
+</div>
+</div>
+</main>
+<div class="footer-bar">
+  <div class="flex items-center justify-between gap-3 px-2" style="pointer-events:auto">
+    <button class="flex items-center justify-center rounded-full h-14 w-14 bg-primary text-white btn-shadow"><span class="material-symbols-outlined">chevron_left</span></button>
+    <button class="flex items-center justify-center rounded-full h-14 w-14 bg-primary text-white btn-shadow">1</button>
+    <button class="flex items-center justify-center rounded-full h-14 w-14 bg-primary text-white btn-shadow">2</button>
+    <button class="flex items-center justify-center rounded-full h-14 w-14 bg-primary text-white btn-shadow">3</button>
+    <button class="flex items-center justify-center rounded-full h-14 w-14 bg-primary text-white btn-shadow">4</button>
+    <button class="flex items-center justify-center rounded-full h-14 w-14 bg-primary text-white btn-shadow"><span class="material-symbols-outlined">chevron_right</span></button>
+  </div>
+</div>
+</div>
+</body></html>

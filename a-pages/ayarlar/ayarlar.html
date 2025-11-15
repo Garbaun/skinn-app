@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ayarlar Ekranı</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="../../styles/site.css" rel="stylesheet"/>
+<script>
+  tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#2badee", accent: "#FFDAB9", "background-light": "#F8FAFC", "background-dark": "#111827", "card-light": "#FFFFFF", "card-dark": "#1F2937", "text-light": "#1E293B", "text-dark": "#F3F4F6", "text-secondary-light": "#64748B", "text-secondary-dark": "#9CA3AF", "border-light": "#E2E8F0", "border-dark": "#374151" }, fontFamily: { display: ["Inter","sans-serif"] }, borderRadius: { DEFAULT: "1rem" } } } }
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+  
+  #language-select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-position:.5rem center,right .5rem center;background-repeat:no-repeat;background-size:1.2em .8em,1.5em 1.5em;padding-left:2.5rem;padding-right:2.5rem;font-size:.875rem;line-height:1.2;height:44px}
+  #language-select option{font-size:.875rem}
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="max-w-sm mx-auto">
+  <div class="site-header fixed top-0 left-0 right-0 z-20 px-5 pt-3 pb-3 bg-transparent">
+    <button class="header-button">
+      <span class="title">Ayarlar</span>
+      <span class="material-symbols-outlined" onclick="history.back()">arrow_back</span>
+    </button>
+  </div>
+  <main class="pt-[72px] p-4 space-y-6">
+    <section>
+      <h2 class="text-lg font-bold text-text-light dark:text-text-dark mb-2">Genel</h2>
+      <div class="bg-white dark:bg-gray-800 rounded-lg overflow-visible border border-border-light dark:border-border-dark card-shadow">
+        <div class="p-4">
+          <div class="custom-select" data-id="lang">
+            <select id="language-select" style="display:none">
+              <option selected>Türkçe</option>
+              <option>English</option>
+            </select>
+            <button type="button" class="cs-button"><span class="flag"></span><span class="cs-label">Türkçe</span><span class="material-symbols-outlined">expand_more</span></button>
+            <ul class="cs-list">
+              <li class="cs-option" data-value="Türkçe"><span class="flag"></span><span>Türkçe</span></li>
+              <li class="cs-option" data-value="English"><span class="flag"></span><span>English</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2 class="text-lg font-bold text-text-light dark:text-text-dark mb-2">Bildirimler</h2>
+      <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-border-light dark:border-border-dark card-shadow">
+        <div class="flex items-center justify-between p-4 border-b border-border-light dark:border-border-dark">
+          <span class="text-text-light dark:text-text-dark">Analiz Sonuçları</span>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input id="cb-results" class="sr-only peer" type="checkbox"/>
+            <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+          </label>
+        </div>
+        <div class="flex items-center justify-between p-4 border-b border-border-light dark:border-border-dark">
+          <div class="flex items-center"><span class="text-text-light dark:text-text-dark">Promosyonlar</span></div>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input id="cb-promos" class="sr-only peer" type="checkbox"/>
+            <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+          </label>
+        </div>
+        <div class="flex items-center justify-between p-4">
+          <span class="text-text-light dark:text-text-dark">Su içmeyi hatırlat!</span>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input id="cb-water" class="sr-only peer" type="checkbox"/>
+            <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+          </label>
+        </div>
+        <div class="flex items-center justify-between p-4">
+          <span class="text-text-light dark:text-text-dark">Günün İpucu</span>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input id="cb-daily-tip" class="sr-only peer" type="checkbox"/>
+            <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+          </label>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2 class="text-lg font-bold text-text-light dark:text-text-dark mb-2">Gizlilik Ayarları</h2>
+      <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-border-light dark:border-border-dark card-shadow">
+        <div class="p-4 border-b border-border-light dark:border-border-dark">
+          <div class="flex items-center justify-between"><span class="text-text-light dark:text-text-dark">Görüntü Paylaşımını Yönet</span>
+            <label class="relative inline-flex items-center cursor-pointer"><input id="cb-share" class="sr-only peer" type="checkbox"/><div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div></label>
+          </div>
+          <p class="text-xs text-text-secondary-light dark:text-text-secondary-dark mt-1">Anonim bilimsel kullanım için</p>
+        </div>
+        <div class="p-4 border-b border-border-light dark:border-border-dark">
+          <div class="flex items-center justify-between"><span class="text-text-light dark:text-text-dark">Veri Anonimleştirme Durumu</span>
+            <label class="relative inline-flex items-center cursor-pointer"><input id="cb-anon" class="sr-only peer" type="checkbox"/><div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div></label>
+          </div>
+          <p class="text-xs text-text-secondary-light dark:text-text-secondary-dark mt-1">Verileriniz her zaman anonimleştirilir</p>
+        </div>
+        <a class="flex items-center justify-between p-4" href="#"><span class="text-text-light dark:text-text-dark">Gizlilik Politikası</span><span class="material-symbols-outlined text-gray-400">chevron_right</span></a>
+      </div>
+    </section>
+    <section>
+      <h2 class="text-lg font-bold text-text-light dark:text-text-dark mb-2">Hesap Yönetimi</h2>
+      <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-border-light dark:border-border-dark card-shadow">
+        <a class="flex items-center justify-between p-4 border-b border-border-light dark:border-border-dark" href="#"><span class="text-text-light dark:text-text-dark">Profili Düzenle</span><span class="material-symbols-outlined text-gray-400">chevron_right</span></a>
+        <a class="flex items-center justify-between p-4 border-b border-border-light dark:border-border-dark" href="#"><span class="text-text-light dark:text-text-dark">Şifre Değiştir</span><span class="material-symbols-outlined text-gray-400">chevron_right</span></a>
+        <a class="flex items-center justify-between p-4 border-b border-border-light dark:border-border-dark" href="#"><span class="text-primary">Çıkış Yap</span><span class="material-symbols-outlined text-gray-400">chevron_right</span></a>
+        <a class="flex items-center justify-between p-4" href="#"><span class="text-red-500">Hesabı Sil</span><span class="material-symbols-outlined text-gray-400">chevron_right</span></a>
+      </div>
+    </section>
+    <section>
+      <h2 class="text-lg font-bold text-text-light dark:text-text-dark mb-2">Uygulama Hakkında</h2>
+      <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-border-light dark:border-border-dark card-shadow">
+        <div class="flex items-center justify-between p-4 border-b border-border-light dark:border-border-dark"><span class="text-text-light dark:text-text-dark">Uygulama Sürümü</span><span class="text-text-secondary-light dark:text-text-secondary-dark">1.0.0</span></div>
+        <a class="flex items-center justify-between p-4 border-b border-border-light dark:border-border-dark" href="#"><span class="text-text-light dark:text-text-dark">Yardım Merkezi</span><span class="material-symbols-outlined text-gray-400">chevron_right</span></a>
+        <a class="flex items-center justify-between p-4" href="#"><span class="text-text-light dark:text-text-dark">Kullanım Koşulları</span><span class="material-symbols-outlined text-gray-400">chevron_right</span></a>
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+  function setStr(k,v){try{localStorage.setItem(k,String(v))}catch(_){}}
+  function getStr(k,d){try{const v=localStorage.getItem(k);return v?String(v):d}catch(_){return d}}
+  function setBool(k,b){setStr(k,b?"1":"0")}
+  function getBool(k,d){return getStr(k,d?"1":"0")==="1"}
+  const langSel=document.getElementById('language-select');
+  const cbResults=document.getElementById('cb-results');
+  const cbPromos=document.getElementById('cb-promos');
+  const cbWater=document.getElementById('cb-water');
+  const cbShare=document.getElementById('cb-share');
+  const cbAnon=document.getElementById('cb-anon');
+  const cbDaily=document.getElementById('cb-daily-tip');
+  function flagData(v){ const tr="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 16'%3e%3crect width='24' height='16' fill='%23e30a17'/%3e%3ccircle cx='10' cy='8' r='4' fill='white'/%3e%3ccircle cx='11' cy='8' r='3' fill='%23e30a17'/%3e%3cpolygon points='14,8 16,7 16,9' fill='white'/%3e%3c/svg%3e"; const en="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 16'%3e%3crect width='24' height='16' fill='%23007acc'/%3e%3cpath d='M0 7h24v2H0z' fill='white'/%3e%3cpath d='M11 0h2v16h-2z' fill='white'/%3e%3c/svg%3e"; return v==='Türkçe'?tr:en }
+  function applyLangVisualCustom(){ try{ const root=document.querySelector('.custom-select[data-id="lang"]'); if(!root) return; const hidden=root.querySelector('select'); const btnLabel=root.querySelector('.cs-button .cs-label'); const btnFlag=root.querySelector('.cs-button .flag'); const list=root.querySelector('.cs-list'); const v=(hidden&&hidden.value)||'Türkçe'; if(btnLabel) btnLabel.textContent=v; if(btnFlag) btnFlag.style.backgroundImage=`url(${flagData(v)})`; list.querySelectorAll('.cs-option').forEach(li=>{ const f=li.querySelector('.flag'); const val=li.getAttribute('data-value'); if(f){ f.style.backgroundImage=`url(${flagData(val)})` } }) }catch(_){} }
+  function initCustomSelect(root){ const hidden=root.querySelector('select'); const btn=root.querySelector('.cs-button'); const label=btn.querySelector('.cs-label'); const list=root.querySelector('.cs-list'); function setVal(val){ if(hidden) hidden.value=val; if(label) label.textContent=val; list.style.display='none'; setStr('language', val); applyLangVisualCustom() } btn.addEventListener('click',()=>{ list.style.display = list.style.display==='block' ? 'none' : 'block' }); list.querySelectorAll('.cs-option').forEach(opt=>opt.addEventListener('click',()=>setVal(opt.getAttribute('data-value')||''))); document.addEventListener('click',e=>{ if(!root.contains(e.target)) list.style.display='none' }); label.textContent=getStr('language','Türkçe'); if(hidden) hidden.value=label.textContent; applyLangVisualCustom() }
+  initCustomSelect(document.querySelector('.custom-select[data-id="lang"]'))
+  if(cbResults){ cbResults.checked = getBool('notifyResults', true); cbResults.addEventListener('change',()=>setBool('notifyResults', cbResults.checked)) }
+  if(cbPromos){ cbPromos.checked = getBool('promosTips', true); cbPromos.addEventListener('change',()=>setBool('promosTips', cbPromos.checked)) }
+  if(cbWater){ cbWater.checked = getBool('suHatirlat', true); cbWater.addEventListener('change',()=>setBool('suHatirlat', cbWater.checked)) }
+  if(cbShare){ cbShare.checked = getBool('imageShare', true); cbShare.addEventListener('change',()=>setBool('imageShare', cbShare.checked)) }
+  if(cbAnon){ cbAnon.checked = getBool('anonymize', true); cbAnon.addEventListener('change',()=>setBool('anonymize', cbAnon.checked)) }
+  if(cbDaily){ cbDaily.checked = getBool('showDailyTip', true); cbDaily.addEventListener('change',()=>setBool('showDailyTip', cbDaily.checked)) }
+</script>
+</body></html>
